@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:text="여기가 첫번째 텍스트 뷰 영역"
+        android:textSize="50dp"
+        android:background="#FA0303"
+        android:layout_width="300dp"
+        android:layout_height="300dp"/>
+
+    <TextView
+        android:text="여기가 두번째 텍스트 뷰 영역"
+        android:textSize="50dp"
+        android:background="#FF9800"
+        android:layout_width="230dp"
+        android:layout_height="300dp"/>
+
+    <TextView
+        android:text="여기가 세번째 텍스트 뷰 영역"
+        android:textSize="30dp"
+        android:background="#F6C206"
+        android:layout_width="150dp"
+        android:layout_height="150dp"/>
+
+</FrameLayout>
