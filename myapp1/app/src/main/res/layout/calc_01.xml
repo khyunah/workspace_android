@@ -111,13 +111,13 @@
             android:textSize="30dp" />
 
         <TextView
-            android:id="@+id/plus"
+            android:id="@+id/calculation"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="#657AEA"
             android:gravity="center"
-            android:text="+"
+            android:text="="
             android:textColor="@color/white"
             android:textSize="30dp" />
 
@@ -169,6 +169,57 @@
             android:background="#5FA7E1"
             android:gravity="center"
             android:text="0"
+            android:textColor="@color/white"
+            android:textSize="30dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/plus"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#6A78BF"
+            android:gravity="center"
+            android:text="+"
+            android:textColor="@color/white"
+            android:textSize="30dp" />
+
+        <TextView
+            android:id="@+id/minus"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#657AEA"
+            android:gravity="center"
+            android:text="-"
+            android:textColor="@color/white"
+            android:textSize="30dp" />
+
+        <TextView
+            android:id="@+id/multi"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#6A78BF"
+            android:gravity="center"
+            android:text="x"
+            android:textColor="@color/white"
+            android:textSize="30dp" />
+
+        <TextView
+            android:id="@+id/division"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#657AEA"
+            android:gravity="center"
+            android:text="/"
             android:textColor="@color/white"
             android:textSize="30dp" />
 

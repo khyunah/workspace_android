@@ -26,6 +26,9 @@ public class MainActivity extends AppCompatActivity {
     private TextView nine;
     private TextView ca;
     private TextView plus;
+    private TextView minus;
+    private TextView multi;
+    private TextView division;
 
     private TextView result;
 
@@ -46,10 +49,10 @@ public class MainActivity extends AppCompatActivity {
          * ctrl + d : 라인 복사
          * alt + shift : 마우스로 단어 앞 누르고 ctrl + shift 하면 단어만큼 선택됨
          */
-        setContentView(R.layout.z_kha_scrollview02_mytube);
+        setContentView(R.layout.calc_01);
 
-//        initData();
-//        addEventListener();
+        initData();
+        addEventListener();
     }
 
     private void initData(){
@@ -65,6 +68,9 @@ public class MainActivity extends AppCompatActivity {
         nine = findViewById(R.id.nine);
         ca = findViewById(R.id.ca);
         plus = findViewById(R.id.plus);
+        minus = findViewById(R.id.minus);
+        multi = findViewById(R.id.multi);
+        division = findViewById(R.id.division);
         result = findViewById(R.id.result);
 
         System.out.println("initData 메서드 호출");
@@ -148,18 +154,33 @@ public class MainActivity extends AppCompatActivity {
         });
 
         plus.setOnClickListener(view -> {
-            int number1 = Integer.parseInt(newValue);
-            int number2 = Integer.parseInt(oldValue);
-            int sum = (number1 + number2);
+            if(newValue != null){
+                int number1 = Integer.parseInt(newValue);
+                int number2 = Integer.parseInt(oldValue);
+                int sum = (number1 + number2);
 
-            Log.d(TAG, "number1 : " + number1);
-            Log.d(TAG, "number2 : " + number2);
-            Log.d(TAG, "sum : " + sum);
+                Log.d(TAG, "number1 : " + number1);
+                Log.d(TAG, "number2 : " + number2);
+                Log.d(TAG, "sum : " + sum);
 
-            oldValue = String.valueOf(sum);
-            result.setText(oldValue);
-            newValue = "0";
+                oldValue = String.valueOf(sum);
+                result.setText(oldValue);
+                newValue = "";
+            }
+
             Log.d(TAG, "+가 눌러졌어요.");
+        });
+
+        minus.setOnClickListener(view -> {
+
+        });
+
+        multi.setOnClickListener(view -> {
+
+        });
+
+        division.setOnClickListener(view -> {
+
         });
     }
 
