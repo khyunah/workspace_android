@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center">
+
+    <!--
+        id를 이용해서 정렬
+    -->
+
+    <TextView
+        android:id="@+id/one"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:background="#676464" />
+
+    <TextView
+        android:id="@+id/two"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_toRightOf="@id/one"
+        android:background="#E35988" />
+
+    <TextView
+        android:id="@+id/three"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_toRightOf="@id/two"
+        android:background="#676464" />
+
+    <TextView
+        android:id="@+id/four"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_below="@id/one"
+        android:background="#E35988" />
+
+    <TextView
+        android:id="@+id/five"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_toRightOf="@id/four"
+        android:layout_below="@id/two"
+        android:background="#676464" />
+
+    <TextView
+        android:id="@+id/six"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_below="@id/three"
+        android:layout_toRightOf="@id/five"
+        android:background="#E35988" />
+
+    <TextView
+        android:id="@+id/seven"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_below="@id/four"
+        android:background="#676464" />
+
+    <TextView
+        android:id="@+id/eight"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_below="@id/four"
+        android:layout_toRightOf="@id/seven"
+        android:background="#E35988" />
+
+    <TextView
+        android:id="@+id/nine"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_below="@id/six"
+        android:layout_toRightOf="@id/eight"
+        android:background="#676464" />
+</RelativeLayout>
