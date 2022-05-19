@@ -1,0 +1,34 @@
+dpi : dot per inch (1 인치 안에서 픽셀이 얼마나 많이 있는가)
+ldpi : 1인치에 120개의 px
+mdpi : 1인치에 160개의 px
+hdpi : 1인치에 240px
+xhdpi : 1인치에 320px
+xxhdpi : 1인치에 480px
+xxxhdpi : 1인치에 640px
+
+dp, Density Independent pixel : 픽셀의 독립적인 단위.
+
+계산하기 공식
+dp를 px로 바꾸는
+px : dp * 단말 DPI / 기본 160
+px을 dp로 바꾸는
+dp : px * 기본 160 / 단말 DPI
+
+예를 들어
+(100 px * 160 / 640 ) = 25dp
+(100 px * 160 / 320 ) = 50dp
+
+
+30dp는
+
+문제 1.
+xxxhdpi 에서는 몇 픽셀로 화면에 그려줄까?
+120
+
+문제 2.
+xxhdpi
+90
+
+문제 3.
+mdpi
+30

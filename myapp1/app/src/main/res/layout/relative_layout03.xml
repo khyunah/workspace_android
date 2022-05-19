@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--
+        특정 뷰 기준으로 배치하는 방법
+        to_, of 가 들어가는 속성을 사용하면 된다.
+
+        id( 식별자 )에 대한 개념도 알아보자
+        단 하나만 존재
+        @+id : 신규 생성
+    -->
+
+    <TextView
+        android:id="@+id/view1"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerInParent="true"
+        android:background="@color/black"
+        android:gravity="center"
+        android:text="view1"
+        android:textColor="@color/white" />
+
+    <TextView
+        android:id="@+id/view2"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerInParent="true"
+        android:layout_toLeftOf="@id/view1"
+        android:background="#DA0404"
+        android:gravity="center"
+        android:text="view2"
+        android:textColor="@color/white" />
+
+    <TextView
+        android:id="@+id/view3"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerInParent="true"
+        android:layout_toRightOf="@id/view1"
+        android:background="#FFC107"
+        android:gravity="center"
+        android:text="view3"
+        android:textColor="@color/white" />
+
+    <TextView
+        android:id="@+id/view4"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/view2"
+        android:layout_alignLeft="@id/view2"
+        android:layout_centerInParent="true"
+        android:background="#0821C3"
+        android:gravity="center"
+        android:text="view4"
+        android:textColor="@color/white" />
+
+    <TextView
+        android:id="@+id/view5"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignBottom="@id/view4"
+        android:layout_centerInParent="true"
+        android:layout_toRightOf="@id/view4"
+        android:background="#058E07"
+        android:gravity="center"
+        android:text="view5"
+        android:textColor="@color/white" />
+
+    <TextView
+        android:id="@+id/view6"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerInParent="true"
+
+        android:background="#DC5FCF"
+        android:gravity="center"
+        android:text="view6"
+        android:textColor="@color/white" />
+
+</RelativeLayout>

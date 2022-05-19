@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--
+        java 같은 경우 문법 오류를 잘 잡아준다.
+        xml 은 문법 체크에 있어서 느슨하다.
+
+        ScrollView 사용시 주의점
+        - 스크롤뷰는 오직 하나의 자식 뷰를 가질 수 있다.
+          부모가 될수 있는 컴포넌트를 하나만 넣는다. ( 수직, 수평 정렬이있는데 충돌이 날수 있기때문에 )
+        - fillViewport="true" 무조건 사용하기
+          ( 초기 스크롤뷰에 기본적인 문제가 있어 보완한 속성. 잘못된게 없는데 오류가 날때 사용하기 )
+    -->
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:background="@color/purple_200" />'
+
+            <TextView
+                android:layout_width="200dp"
+                android:layout_height="300dp"
+                android:background="@color/purple_700" />
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="300dp"
+                android:background="@color/purple_200" />
+
+
+            <TextView
+                android:layout_width="200dp"
+                android:layout_height="300dp"
+                android:background="@color/purple_500" />
+
+        </LinearLayout>
+
+    </ScrollView>
+</LinearLayout>

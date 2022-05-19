@@ -1,0 +1,14 @@
+
+androidTest ㅡ> 테스트 코드 사용시 쓰는 폴더
+main ㅡ> 우리가 작성하는 자바코드( or 코틀린 ) 을 작성할때 사용한다.
+    res ㅡ> resource 의 약자. ( 이미지, 필요한 여러 utils 파일등을 넣어 두는 곳 )
+        drawable : 이미지를 넣어 두는 폴더
+        layout : xml 파일을 이용해서 화면을 그릴때 사용하는 파일을 넣어둔다.
+        mipmap : 앱 아이콘 이미지를 넣어두면 된다.
+        values : 공통적으로 사용되는 값들을 넣어두는 곳입니다. ( 유지 보수 하기 위해 공통으로 선언 )
+                colors : 코드힌트로 뜨는 색상을 미리 정해둘 수 있다.
+                        colorPrimary ㅡ> 브랜드 컬러로 지정하는 name 명
+                strings : 자주 쓰이는 값을 변수화 처리해서 사용할 수 있다.
+
+Gradle Scripts
+dependencies : 라이브러리
