@@ -2,14 +2,16 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:layout_margin="10dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="230dp"
-        android:background="#686868"
+        android:background="@drawable/radius_calcresult"
         android:gravity="right|bottom"
-        android:padding="10dp">
+        android:padding="10dp"
+        android:layout_margin="3dp">
 
         <TextView
             android:id="@+id/result"
@@ -31,7 +33,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="#94C7EF"
+            android:background="@drawable/radius_oddnumber"
             android:gravity="center"
             android:text="1"
             android:textColor="@color/white"
@@ -42,7 +44,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="#5FA7E1"
+            android:background="@drawable/radius_evennumber"
             android:gravity="center"
             android:text="2"
             android:textColor="@color/white"
@@ -53,20 +55,20 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="#94C7EF"
+            android:background="@drawable/radius_oddnumber"
             android:gravity="center"
             android:text="3"
             android:textColor="@color/white"
             android:textSize="30dp" />
 
         <TextView
-            android:id="@+id/ca"
+            android:id="@+id/plus"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="#6A78BF"
+            android:background="@drawable/radius_calcsign_01"
             android:gravity="center"
-            android:text="CA"
+            android:text="+"
             android:textColor="@color/white"
             android:textSize="30dp" />
 
@@ -82,7 +84,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="#5FA7E1"
+            android:background="@drawable/radius_evennumber"
             android:gravity="center"
             android:text="4"
             android:textColor="@color/white"
@@ -93,7 +95,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="#94C7EF"
+            android:background="@drawable/radius_oddnumber"
             android:gravity="center"
             android:text="5"
             android:textColor="@color/white"
@@ -104,20 +106,20 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="#5FA7E1"
+            android:background="@drawable/radius_evennumber"
             android:gravity="center"
             android:text="6"
             android:textColor="@color/white"
             android:textSize="30dp" />
 
         <TextView
-            android:id="@+id/calculation"
+            android:id="@+id/minus"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="#657AEA"
+            android:background="@drawable/radius_calcsign_02"
             android:gravity="center"
-            android:text="="
+            android:text="-"
             android:textColor="@color/white"
             android:textSize="30dp" />
 
@@ -133,7 +135,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="#94C7EF"
+            android:background="@drawable/radius_oddnumber"
             android:gravity="center"
             android:text="7"
             android:textColor="@color/white"
@@ -144,7 +146,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="#5FA7E1"
+            android:background="@drawable/radius_evennumber"
             android:gravity="center"
             android:text="8"
             android:textColor="@color/white"
@@ -155,20 +157,20 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="#94C7EF"
+            android:background="@drawable/radius_oddnumber"
             android:gravity="center"
             android:text="9"
             android:textColor="@color/white"
             android:textSize="30dp" />
 
         <TextView
-            android:id="@+id/zero"
+            android:id="@+id/multi"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="#5FA7E1"
+            android:background="@drawable/radius_calcsign_01"
             android:gravity="center"
-            android:text="0"
+            android:text="x"
             android:textColor="@color/white"
             android:textSize="30dp" />
 
@@ -180,35 +182,35 @@
         android:layout_weight="1">
 
         <TextView
-            android:id="@+id/plus"
+            android:id="@+id/ca"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="#6A78BF"
+            android:background="@drawable/radius_calcsign_02"
             android:gravity="center"
-            android:text="+"
+            android:text="CA"
             android:textColor="@color/white"
             android:textSize="30dp" />
 
         <TextView
-            android:id="@+id/minus"
+            android:id="@+id/zero"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="#657AEA"
+            android:background="@drawable/radius_evennumber"
             android:gravity="center"
-            android:text="-"
+            android:text="0"
             android:textColor="@color/white"
             android:textSize="30dp" />
 
         <TextView
-            android:id="@+id/multi"
+            android:id="@+id/calculation"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="#6A78BF"
+            android:background="@drawable/radius_calcsign_01"
             android:gravity="center"
-            android:text="x"
+            android:text="="
             android:textColor="@color/white"
             android:textSize="30dp" />
 
@@ -217,7 +219,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="#657AEA"
+            android:background="@drawable/radius_calcsign_02"
             android:gravity="center"
             android:text="/"
             android:textColor="@color/white"
