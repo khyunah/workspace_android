@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView minus;
     private TextView multi;
     private TextView division;
+    private TextView dot;
 
     private TextView result;
 
@@ -40,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
     boolean isMinus = false;
     boolean isMulti = false;
     boolean isDivision = false;
+    boolean isZero = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,18 +80,23 @@ public class MainActivity extends AppCompatActivity {
         multi = findViewById(R.id.multi);
         division = findViewById(R.id.division);
         result = findViewById(R.id.result);
+        dot = findViewById(R.id.dot);
 
         System.out.println("initData 메서드 호출");
     }
 
     private void addEventListener() {
         zero.setOnClickListener(view -> {
-            clickNumber(zero);
-//            if(newValue.length() <= 16){
-//                newValue = newValue + "0";
-//                result.setText(newValue);
-//                Log.d("LENGTH","16자리가 채워졌습니다.");
-//            }
+            int index_zero = newValue.indexOf("0");
+            int index_dot = newValue.lastIndexOf(".");
+
+            if (newValue.equals("") && oldValue.equals("")) {
+                isZero = true;
+            } else if (index_zero != 0) {
+                clickNumber(zero);
+            } else if (index_dot != -1){
+                clickNumber(zero);
+            }
         });
 
         one.setOnClickListener(new View.OnClickListener() {
@@ -186,16 +193,35 @@ public class MainActivity extends AppCompatActivity {
             isDivision = true;
             calc(division);
         });
+
+        dot.setOnClickListener(view -> {
+            Log.d(TAG, "소수점 " + dot.getText() + " 클릭");
+
+            if (isZero) {
+                if(newValue.equals("")){
+                    newValue = newValue + "0.";
+                    result.setText(newValue);
+                    isZero = false;
+                }
+            }
+
+            if (!newValue.equals("")) {
+                if (!newValue.contains(".")) {
+                    newValue = newValue + ".";
+                    result.setText(newValue);
+                }
+            }
+        });
     }
 
-    public void clickNumber(TextView number){
+    public void clickNumber(TextView number) {
         newValue = newValue + number.getText();
         result.setText(newValue);
         Log.d(TAG, "숫자 " + number.getText() + " 번 클릭"); // d는 태그별로 보고 싶은 것만 보고싶은 Log 일때 사용
     }
 
     public void calc(TextView sign) {
-        Log.d(TAG, "부호 " + sign.getText() +" 클릭");
+        Log.d(TAG, "부호 " + sign.getText() + " 클릭");
 
         if (!newValue.equals("")) {
 
@@ -219,7 +245,7 @@ public class MainActivity extends AppCompatActivity {
             if ((sum % 1) == 0) {
                 oldValue = String.format("%.0f", sum);
             } else {
-                oldValue = String.format("%.2f",sum);
+                oldValue = String.format("%.2f", sum);
             }
 
             result.setText(oldValue);
