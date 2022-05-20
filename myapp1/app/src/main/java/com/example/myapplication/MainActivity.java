@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView eight;
     private TextView nine;
     private TextView ca;
+    private TextView calculation;
     private TextView plus;
     private TextView minus;
     private TextView multi;
@@ -32,9 +33,13 @@ public class MainActivity extends AppCompatActivity {
 
     private TextView result;
 
-//    int sum = 0;
-    String oldValue = "0";
+    String oldValue = "";
     String newValue = "";
+
+    boolean isPlus = false;
+    boolean isMinus = false;
+    boolean isMulti = false;
+    boolean isDivision = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
         addEventListener();
     }
 
-    private void initData(){
+    private void initData() {
         zero = findViewById(R.id.zero);
         one = findViewById(R.id.one);   // (1000004) 주소
         two = findViewById(R.id.two);   // R : 리소스
@@ -67,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
         eight = findViewById(R.id.eight);
         nine = findViewById(R.id.nine);
         ca = findViewById(R.id.ca);
+        calculation = findViewById(R.id.calculation);
         plus = findViewById(R.id.plus);
         minus = findViewById(R.id.minus);
         multi = findViewById(R.id.multi);
@@ -76,11 +82,14 @@ public class MainActivity extends AppCompatActivity {
         System.out.println("initData 메서드 호출");
     }
 
-    private void addEventListener(){
+    private void addEventListener() {
         zero.setOnClickListener(view -> {
-            newValue = newValue + "0";
-            result.setText(newValue);
-            Log.d(TAG, "zero가 눌러졌어요.");
+            clickNumber(zero);
+//            if(newValue.length() <= 16){
+//                newValue = newValue + "0";
+//                result.setText(newValue);
+//                Log.d("LENGTH","16자리가 채워졌습니다.");
+//            }
         });
 
         one.setOnClickListener(new View.OnClickListener() {
@@ -98,90 +107,124 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 newValue = newValue + "2";
                 result.setText(newValue);
-                Log.d("MYTAG", "two가 눌러졌어요.");      // d는 태그별로 보고 싶은 것만 보고싶은 Log 일때 사용
+                Log.d("MYTAG", "two가 눌러졌어요.");
             }
         });
 
+        // 안드로이드에서는 익명구현객체보다 람다식을 많이 사용한다.
         three.setOnClickListener(view -> {
-            newValue = newValue + "3";
-            result.setText(newValue);
-            Log.d(TAG, "three가 눌러졌어요.");    // 안드로이드에서는 익명구현객체보다 람다식을 많이 사용한다.
+            clickNumber(three);
         });
 
         four.setOnClickListener(view -> {
-            newValue = newValue + "4";
-            result.setText(newValue);
-            Log.d(TAG, "four가 눌러졌어요.");
+            clickNumber(four);
         });
 
         five.setOnClickListener(view -> {
-            newValue = newValue + "5";
-            result.setText(newValue);
-            Log.d(TAG, "five가 눌러졌어요.");
+            clickNumber(five);
         });
 
         six.setOnClickListener(view -> {
-            newValue = newValue + "6";
-            result.setText(newValue);
-            Log.d(TAG, "six가 눌러졌어요.");
+            clickNumber(six);
         });
 
         seven.setOnClickListener(view -> {
-            newValue = newValue + "7";
-            result.setText(newValue);
-            Log.d(TAG, "seven이 눌러졌어요.");
+            clickNumber(seven);
         });
 
         eight.setOnClickListener(view -> {
-            newValue = newValue + "8";
-            result.setText(newValue);
-            Log.d(TAG, "eight가 눌러졌어요.");
+            clickNumber(eight);
         });
 
         nine.setOnClickListener(view -> {
-            newValue = newValue + "9";
-            result.setText(newValue);
-//            sum = oldValue + Integer.parseInt(newValue);
-//            result.setText(sum + "");
-            Log.d(TAG, "nine이 눌러졌어요.");
+            clickNumber(nine);
         });
 
         ca.setOnClickListener(view -> {
-            oldValue = "0";
-            newValue = "0";
+            oldValue = "";
+            newValue = "";
             result.setText("0");
-            Log.d(TAG, "ca가 눌러졌어요.");
+            Log.d(TAG, "초기화 CA 클릭");
+        });
+
+        calculation.setOnClickListener(view -> {
+            calc(calculation);
         });
 
         plus.setOnClickListener(view -> {
-            if(newValue != null){
-                int number1 = Integer.parseInt(newValue);
-                int number2 = Integer.parseInt(oldValue);
-                int sum = (number1 + number2);
+            isMinus = false;
+            isMulti = false;
+            isDivision = false;
 
-                Log.d(TAG, "number1 : " + number1);
-                Log.d(TAG, "number2 : " + number2);
-                Log.d(TAG, "sum : " + sum);
-
-                oldValue = String.valueOf(sum);
-                result.setText(oldValue);
-                newValue = "";
-            }
-
-            Log.d(TAG, "+가 눌러졌어요.");
+            isPlus = true;
+            calc(plus);
         });
 
         minus.setOnClickListener(view -> {
+            isPlus = false;
+            isMulti = false;
+            isDivision = false;
 
+            isMinus = true;
+            calc(minus);
         });
 
         multi.setOnClickListener(view -> {
+            isPlus = false;
+            isMinus = false;
+            isDivision = false;
 
+            isMulti = true;
+            calc(multi);
         });
 
         division.setOnClickListener(view -> {
+            isPlus = false;
+            isMinus = false;
+            isMulti = false;
 
+            isDivision = true;
+            calc(division);
         });
+    }
+
+    public void clickNumber(TextView number){
+        newValue = newValue + number.getText();
+        result.setText(newValue);
+        Log.d(TAG, "숫자 " + number.getText() + " 번 클릭"); // d는 태그별로 보고 싶은 것만 보고싶은 Log 일때 사용
+    }
+
+    public void calc(TextView sign) {
+        Log.d(TAG, "부호 " + sign.getText() +" 클릭");
+
+        if (!newValue.equals("")) {
+
+            double number1 = Double.parseDouble(newValue);
+            double number2 = 0;
+            double sum = number1;
+
+            if (!oldValue.equals("")) {
+                number2 = Double.parseDouble(oldValue);
+                if (isPlus) {
+                    sum = number1 + number2;
+                } else if (isMinus) {
+                    sum = number2 - number1;
+                } else if (isMulti) {
+                    sum = number1 * number2;
+                } else if (isDivision) {
+                    sum = number2 / number1;
+                }
+            }
+
+            if ((sum % 1) == 0) {
+                oldValue = String.format("%.0f", sum);
+            } else {
+                oldValue = String.format("%.2f",sum);
+            }
+
+            result.setText(oldValue);
+            newValue = "";
+        }
     }
 
 }

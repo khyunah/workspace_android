@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/gradient_01"
+            android:gravity="center"
+            android:text="text1"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/radius_01"
+            android:gravity="center"
+            android:text="text1"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/solid_01"
+            android:gravity="center"
+            android:text="text1"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/solid_02"
+            android:gravity="center"
+            android:text="text2"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:backgroundTint="#FF9800"
+            android:text="button" />
+
+        <!--
+            버튼에 drawable 파일을 쓰려면 androidx.appcompat.widget.AppCompatButton 이거 사용해야 함
+        -->
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:background="@drawable/gradient_01"
+            android:text="button" />
+
+    </LinearLayout>
+
+<!--
+    카드 레이아웃
+    부모가 될수 있는 컴포넌트
+-->
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:checkable="true"
+        android:clickable="true"
+        android:focusable="true"
+        app:strokeWidth="1dp"
+        app:strokeColor="@color/black"
+        app:cardElevation="0dp">
+
+        <TextView
+            android:text="text1"
+            android:background="@color/purple_200"
+            android:layout_width="50dp"
+            android:layout_height="50dp"/>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</LinearLayout>
