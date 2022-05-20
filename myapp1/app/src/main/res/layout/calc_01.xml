@@ -6,10 +6,10 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="230dp"
         android:background="#686868"
-        android:gravity="right|center"
-        android:paddingRight="10dp">
+        android:gravity="right|bottom"
+        android:padding="10dp">
 
         <TextView
             android:id="@+id/result"
