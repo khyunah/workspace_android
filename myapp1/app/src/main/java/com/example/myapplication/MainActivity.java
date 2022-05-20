@@ -56,10 +56,10 @@ public class MainActivity extends AppCompatActivity {
          * ctrl + d : 라인 복사
          * alt + shift : 마우스로 단어 앞 누르고 ctrl + shift 하면 단어만큼 선택됨
          */
-        setContentView(R.layout.calc_01);
+        setContentView(R.layout.activity_main);
 
-        initData();
-        addEventListener();
+//        initData();
+//        addEventListener();
     }
 
     private void initData() {
