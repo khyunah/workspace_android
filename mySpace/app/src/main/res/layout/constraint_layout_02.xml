@@ -5,6 +5,39 @@
     android:layout_height="match_parent">
 
     <!--
+        packed
+    -->
+
+    <Button
+        android:id="@+id/btn7"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="100dp"
+        android:text="7"
+        app:layout_constraintEnd_toStartOf="@id/btn8"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn8"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:text="8"
+        app:layout_constraintEnd_toStartOf="@id/btn9"
+        app:layout_constraintStart_toEndOf="@id/btn7"
+        app:layout_constraintTop_toTopOf="@id/btn7" />
+
+    <Button
+        android:id="@+id/btn9"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:text="9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btn8"
+        app:layout_constraintTop_toTopOf="@id/btn7" />
+
+    <!--
         Spread
         균등하게 배치하기
     -->
@@ -13,9 +46,10 @@
         android:id="@+id/btn1"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="300dp"
         android:text="1"
         app:layout_constraintEnd_toStartOf="@id/btn2"
+        app:layout_constraintHorizontal_chainStyle="spread"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -45,7 +79,7 @@
         android:id="@+id/btn4"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="500dp"
         android:text="4"
         app:layout_constraintEnd_toStartOf="@id/btn5"
         app:layout_constraintHorizontal_chainStyle="spread_inside"
@@ -69,69 +103,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/btn5"
         app:layout_constraintTop_toTopOf="@id/btn4" />
-
-    <!--
-        packed
-    -->
-
-    <Button
-        android:id="@+id/btn7"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="300dp"
-        android:text="7"
-        app:layout_constraintEnd_toStartOf="@id/btn8"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/btn8"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:text="8"
-        app:layout_constraintEnd_toStartOf="@id/btn9"
-        app:layout_constraintStart_toEndOf="@id/btn7"
-        app:layout_constraintTop_toTopOf="@id/btn7" />
-
-    <Button
-        android:id="@+id/btn9"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:text="9"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/btn8"
-        app:layout_constraintTop_toTopOf="@id/btn7" />
-
-    <!--
-        세로로 균등 배치 해보기
-    -->
-    <!--    <Button-->
-    <!--        android:id="@+id/btn10"-->
-    <!--        android:layout_width="50dp"-->
-    <!--        android:layout_height="50dp"-->
-    <!--        android:text="10"-->
-    <!--        app:layout_constraintVertical_chainStyle="spread_inside"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintBottom_toTopOf="@id/btn11"-->
-    <!--        app:layout_constraintTop_toTopOf="parent" />-->
-
-    <!--    <Button-->
-    <!--        android:id="@+id/btn11"-->
-    <!--        android:layout_width="50dp"-->
-    <!--        android:layout_height="50dp"-->
-    <!--        android:text="11"-->
-    <!--        app:layout_constraintBottom_toTopOf="@id/btn12"-->
-    <!--        app:layout_constraintTop_toBottomOf="@id/btn10"-->
-    <!--        app:layout_constraintStart_toStartOf="@id/btn10"/>-->
-
-    <!--    <Button-->
-    <!--        android:id="@+id/btn12"-->
-    <!--        android:layout_width="50dp"-->
-    <!--        android:layout_height="50dp"-->
-    <!--        android:text="12"-->
-    <!--        app:layout_constraintStart_toStartOf="@id/btn10"-->
-    <!--        app:layout_constraintTop_toBottomOf="@id/btn11"-->
-    <!--        app:layout_constraintBottom_toTopOf="parent" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
