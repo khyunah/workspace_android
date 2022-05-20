@@ -33,9 +33,13 @@ public class MainActivity extends AppCompatActivity {
 
     private TextView result;
 
-//    int sum = 0;
-    String oldValue = "0";
+    String oldValue = "";
     String newValue = "";
+
+    boolean isPlus = false;
+    boolean isMinus = false;
+    boolean isMulti = false;
+    boolean isDivision = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
         addEventListener();
     }
 
-    private void initData(){
+    private void initData() {
         zero = findViewById(R.id.zero);
         one = findViewById(R.id.one);   // (1000004) 주소
         two = findViewById(R.id.two);   // R : 리소스
@@ -78,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
         System.out.println("initData 메서드 호출");
     }
 
-    private void addEventListener(){
+    private void addEventListener() {
         zero.setOnClickListener(view -> {
             newValue = newValue + "0";
             result.setText(newValue);
@@ -143,51 +147,136 @@ public class MainActivity extends AppCompatActivity {
         nine.setOnClickListener(view -> {
             newValue = newValue + "9";
             result.setText(newValue);
-//            sum = oldValue + Integer.parseInt(newValue);
-//            result.setText(sum + "");
             Log.d(TAG, "nine이 눌러졌어요.");
         });
 
         ca.setOnClickListener(view -> {
-            oldValue = "0";
-            newValue = "0";
+            oldValue = "";
+            newValue = "";
             result.setText("0");
             Log.d(TAG, "ca가 눌러졌어요.");
         });
 
         calculation.setOnClickListener(view -> {
-            if(newValue != null){
-                int number1 = Integer.parseInt(newValue);
-                int number2 = Integer.parseInt(oldValue);
-                int sum = (number1 + number2);
-
-                Log.d(TAG, "number1 : " + number1);
-                Log.d(TAG, "number2 : " + number2);
-                Log.d(TAG, "sum : " + sum);
-
-                oldValue = String.valueOf(sum);
-                result.setText(oldValue);
-                newValue = "";
-            }
-
             Log.d(TAG, "=가 눌러졌어요.");
+
+            calc();
         });
 
         plus.setOnClickListener(view -> {
             Log.d(TAG, "+가 눌러졌어요.");
+            isMinus = false;
+            isMulti = false;
+            isDivision = false;
+
+            isPlus = true;
+            calc();
         });
 
         minus.setOnClickListener(view -> {
             Log.d(TAG, "-가 눌러졌어요.");
+            isPlus = false;
+            isMulti = false;
+            isDivision = false;
+
+            isMinus = true;
+            calc();
+
+//            if (!newValue.equals("")) {
+//
+//                int number1 = Integer.parseInt(newValue);
+//                int number2 = 0;
+//                int sum = number1;
+//
+//                if (!oldValue.equals("")) {
+//                    number2 = Integer.parseInt(oldValue);
+//                    sum = number2 - number1;
+//                }
+//
+//                oldValue = String.valueOf(sum);
+//                result.setText(oldValue);
+//                newValue = "";
+//            }
+
         });
 
         multi.setOnClickListener(view -> {
             Log.d(TAG, "*가 눌러졌어요.");
+            isPlus = false;
+            isMinus = false;
+            isDivision = false;
+
+            isMulti = true;
+            calc();
+
+//            if (!newValue.equals("")) {
+//
+//                int number1 = Integer.parseInt(newValue);
+//                int number2 = 0;
+//                int sum = number1;
+//
+//                if (!oldValue.equals("")) {
+//                    number2 = Integer.parseInt(oldValue);
+//                    sum = number1 * number2;
+//                }
+//
+//                oldValue = String.valueOf(sum);
+//                result.setText(oldValue);
+//                newValue = "";
+//            }
         });
 
         division.setOnClickListener(view -> {
             Log.d(TAG, "/가 눌러졌어요.");
+            isPlus = false;
+            isMinus = false;
+            isMulti = false;
+
+            isDivision = true;
+            calc();
+
+//            if (!newValue.equals("")) {
+//
+//                int number1 = Integer.parseInt(newValue);
+//                int number2 = 0;
+//                int sum = number1;
+//
+//                if (!oldValue.equals("")) {
+//                    number2 = Integer.parseInt(oldValue);
+//                    sum = number2 / number1;
+//                }
+//
+//                oldValue = String.valueOf(sum);
+//                result.setText(oldValue);
+//                newValue = "";
+//            }
         });
+    }
+
+    public void calc() {
+        if (!newValue.equals("")) {
+
+            int number1 = Integer.parseInt(newValue);
+            int number2 = 0;
+            int sum = number1;
+
+            if (!oldValue.equals("")) {
+                number2 = Integer.parseInt(oldValue);
+                if (isPlus) {
+                    sum = number1 + number2;
+                } else if (isMinus) {
+                    sum = number2 - number1;
+                } else if (isMulti) {
+                    sum = number1 * number2;
+                } else if (isDivision) {
+                    sum = number2 / number1;
+                }
+            }
+
+            oldValue = String.valueOf(sum);
+            result.setText(oldValue);
+            newValue = "";
+        }
     }
 
 }
