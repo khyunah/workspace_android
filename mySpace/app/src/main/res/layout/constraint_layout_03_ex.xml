@@ -158,6 +158,7 @@
             android:layout_height="90dp"/>
 
         <Button
+            android:layout_marginHorizontal="1dp"
             android:id="@+id/btn_depart"
             android:text="DEPART"
             android:textColor="@color/white"
