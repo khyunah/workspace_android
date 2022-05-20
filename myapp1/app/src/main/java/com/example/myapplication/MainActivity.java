@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView eight;
     private TextView nine;
     private TextView ca;
+    private TextView calculation;
     private TextView plus;
     private TextView minus;
     private TextView multi;
@@ -67,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
         eight = findViewById(R.id.eight);
         nine = findViewById(R.id.nine);
         ca = findViewById(R.id.ca);
+        calculation = findViewById(R.id.calculation);
         plus = findViewById(R.id.plus);
         minus = findViewById(R.id.minus);
         multi = findViewById(R.id.multi);
@@ -153,7 +155,7 @@ public class MainActivity extends AppCompatActivity {
             Log.d(TAG, "ca가 눌러졌어요.");
         });
 
-        plus.setOnClickListener(view -> {
+        calculation.setOnClickListener(view -> {
             if(newValue != null){
                 int number1 = Integer.parseInt(newValue);
                 int number2 = Integer.parseInt(oldValue);
@@ -168,19 +170,23 @@ public class MainActivity extends AppCompatActivity {
                 newValue = "";
             }
 
+            Log.d(TAG, "=가 눌러졌어요.");
+        });
+
+        plus.setOnClickListener(view -> {
             Log.d(TAG, "+가 눌러졌어요.");
         });
 
         minus.setOnClickListener(view -> {
-
+            Log.d(TAG, "-가 눌러졌어요.");
         });
 
         multi.setOnClickListener(view -> {
-
+            Log.d(TAG, "*가 눌러졌어요.");
         });
 
         division.setOnClickListener(view -> {
-
+            Log.d(TAG, "/가 눌러졌어요.");
         });
     }
 
