@@ -46,16 +46,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        /**
-         * 아래의 코드에서 id를 들고올때 여기 적어준 액티비티에 속하는 id만 가져올 수 있다.
-         * 다른 액티비티의 id를 가져오면 NullPointException 발생함
-         *
-         * 코드의 오류가 발생하면 앱 실행할때 죽여버림. ㅡ> 크러쉬 났다 라고 말함
-         *
-         * ctrl + d : 라인 복사
-         * alt + shift : 마우스로 단어 앞 누르고 ctrl + shift 하면 단어만큼 선택됨
-         */
         setContentView(R.layout.calc_01);
 
         initData();
@@ -64,8 +54,8 @@ public class MainActivity extends AppCompatActivity {
 
     private void initData() {
         zero = findViewById(R.id.zero);
-        one = findViewById(R.id.one);   // (1000004) 주소
-        two = findViewById(R.id.two);   // R : 리소스
+        one = findViewById(R.id.one);
+        two = findViewById(R.id.two);
         three = findViewById(R.id.three);
         four = findViewById(R.id.four);
         five = findViewById(R.id.five);
@@ -104,8 +94,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 newValue = newValue + "1";
                 result.setText(newValue);
-                Log.d("MYTAG", "one이 눌러졌어요.");    // 안드로이드에서는 sysout 보다 로그 많이 씀
-                // tag 저거는 쓰는거 아니고 문자열 작성하면 자동으로 나옴
+                Log.d("MYTAG", "one이 눌러졌어요.");
             }
         });
 
@@ -118,7 +107,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // 안드로이드에서는 익명구현객체보다 람다식을 많이 사용한다.
         three.setOnClickListener(view -> {
             clickNumber(three);
         });
@@ -217,7 +205,7 @@ public class MainActivity extends AppCompatActivity {
     public void clickNumber(TextView number) {
         newValue = newValue + number.getText();
         result.setText(newValue);
-        Log.d(TAG, "숫자 " + number.getText() + " 번 클릭"); // d는 태그별로 보고 싶은 것만 보고싶은 Log 일때 사용
+        Log.d(TAG, "숫자 " + number.getText() + " 번 클릭");
     }
 
     public void calc(TextView sign) {
