@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 
+// 액티비티 생명주기
+// 템플릿 메서드 페턴 알아보기
 public class MainActivity extends AppCompatActivity {
 
     private static final String LIFE_CYCLE = "life_cycle";
