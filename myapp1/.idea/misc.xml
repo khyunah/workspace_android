@@ -50,11 +50,15 @@
         <entry key="..\:/boot/workspace_android/myapp1/app/src/main/res/layout/z_kha_relative_layout02.xml" value="0.2359375" />
         <entry key="..\:/boot/workspace_android/myapp1/app/src/main/res/layout/z_kha_scrollview01.xml" value="0.2359375" />
         <entry key="..\:/boot/workspace_android/myapp1/app/src/main/res/layout/z_kha_scrollview02_mytube.xml" value="0.2359375" />
+        <entry key="..\:/workspace_android/myapp1/app/src/main/res/drawable/calc_evennumber.xml" value="0.2295" />
+        <entry key="..\:/workspace_android/myapp1/app/src/main/res/drawable/clalc_ca_pressed.xml" value="0.2295" />
+        <entry key="..\:/workspace_android/myapp1/app/src/main/res/drawable/clalc_evennumber_pressed.xml" value="0.2295" />
         <entry key="..\:/workspace_android/myapp1/app/src/main/res/drawable/drawble_calc.xml" value="0.2595" />
         <entry key="..\:/workspace_android/myapp1/app/src/main/res/drawable/radius_calc_02.xml" value="0.2595" />
         <entry key="..\:/workspace_android/myapp1/app/src/main/res/drawable/radius_calcresult.xml" value="0.2595" />
         <entry key="..\:/workspace_android/myapp1/app/src/main/res/drawable/radius_calcsign_01.xml" value="0.2595" />
         <entry key="..\:/workspace_android/myapp1/app/src/main/res/drawable/radius_calcsign_02.xml" value="0.2595" />
+        <entry key="..\:/workspace_android/myapp1/app/src/main/res/drawable/radius_evennumber.xml" value="0.2295" />
         <entry key="..\:/workspace_android/myapp1/app/src/main/res/drawable/radius_oddnumber.xml" value="0.2595" />
         <entry key="..\:/workspace_android/myapp1/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/workspace_android/myapp1/app/src/main/res/layout/calc_01.xml" value="0.33" />
