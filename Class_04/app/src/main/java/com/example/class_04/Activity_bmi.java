@@ -14,13 +14,13 @@ public class Activity_bmi extends AppCompatActivity {
 
     private Button okBtn;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bmi);
 
         initData();
+        addEventListener();
     }
 
     private void initData(){
@@ -31,12 +31,13 @@ public class Activity_bmi extends AppCompatActivity {
 
     private void addEventListener(){
         okBtn.setOnClickListener(view -> {
-            String height = heightEt.getText().toString();
-            String weight = weightEt.getText().toString();
+            int height = Integer.parseInt(heightEt.getText().toString());
+            int weight = Integer.parseInt(weightEt.getText().toString());
 
             Intent intent = new Intent(this, Activity_bmicheck.class);
             intent.putExtra("height",height);
             intent.putExtra("weight",weight);
+            startActivity(intent);
         });
     }
 }

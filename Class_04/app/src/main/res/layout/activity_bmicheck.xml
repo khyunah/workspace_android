@@ -7,23 +7,54 @@
     tools:context=".Activity_bmicheck">
 
     <TextView
+        android:id="@+id/bmiTextView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_height="80dp"
+        android:background="#53ABD3"
         android:gravity="center"
-        android:text="BMI 검사"
-        android:textSize="50dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:text="BMI 지수 결과"
+        android:textColor="@color/white"
+        android:textSize="45dp"
+        app:layout_constraintBottom_toTopOf="@id/heightResult"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/bmiCheckText"
+        android:id="@+id/heightResult"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:gravity="center"
-        android:textSize="20dp"
+        android:text="신장 : "
+        app:layout_constraintBottom_toTopOf="@id/weightResult"
+        app:layout_constraintTop_toBottomOf="@id/bmiTextView" />
+
+    <TextView
+        android:id="@+id/weightResult"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="체중 : "
+        app:layout_constraintBottom_toTopOf="@id/bmiValue"
+        app:layout_constraintTop_toBottomOf="@id/heightResult" />
+
+    <TextView
+        android:id="@+id/bmiValue"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="BMI 지수 : "
+        app:layout_constraintBottom_toTopOf="@id/bmiResult"
+        app:layout_constraintTop_toBottomOf="@id/weightResult" />
+
+    <TextView
+        android:id="@+id/bmiResult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="비만입니다."
+        android:textSize="30dp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/bmiCheckText" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/weightResult" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

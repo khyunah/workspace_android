@@ -20,11 +20,11 @@ public class Activity2 extends AppCompatActivity {
 //      int 는 값이 없다면 기본값을 0으로 세팅해야한다.
 //      String 은 자동 초기화. 기본값 세팅 안해도 됨.
 
-        TextView textView = findViewById(R.id.nameTextView);
+//        TextView textView = findViewById(R.id.nameTextView);
 
-        if (getIntent() != null) {
-            String getData = getIntent().getStringExtra(Activity1.KEY_NAME);
-            textView.setText(getData);
-        }
+//        if (getIntent() != null) {
+//            String getData = getIntent().getStringExtra(Activity1.KEY_NAME);
+//            textView.setText(getData);
+//        }
     }
 }
