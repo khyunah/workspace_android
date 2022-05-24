@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+<!--
+    showAsAction : 메뉴 아이콘이 어떻게 보일지를 설정하는것 ( 눌렀을때 )
+-->
+
+    <item
+        android:id="@+id/menuItem1"
+        android:icon="@drawable/ic_baseline_bluetooth_24"
+        android:title="menu1"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/menuItem2"
+        android:icon="@drawable/ic_baseline_arrow_downward_24"
+        android:title="menu2"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/menuItem3"
+        android:icon="@drawable/ic_baseline_speaker_24"
+        android:title="menu3"
+        app:showAsAction="ifRoom"/>
+
+</menu>
