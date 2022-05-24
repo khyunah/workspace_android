@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="#C63C3C"
-    app:popupTheme="@style/Theme.AppCompat.Light">
+    app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
     <LinearLayout
         android:layout_width="match_parent"
