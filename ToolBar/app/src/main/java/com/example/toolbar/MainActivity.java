@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
                 if (result.getResultCode() == Activity.RESULT_OK) {
                     // 정상 동작
                     Intent data = result.getData();
-                    int returnValue = data.getIntExtra("result",0);
+                    int returnValue = data.getIntExtra("result", 0);
                     textView.setText(returnValue + "");
                 } else {
                     // 실패
