@@ -24,10 +24,6 @@ public class MainActivity extends AppCompatActivity {
     // 콜백 메서드
     ActivityResultLauncher<Intent> startActivityResult = registerForActivityResult(
 
-            // StartActivityForResult() : 레거시에서 사용하던 메소드이며, 그것은 Deprecated 되었고
-            // 그걸 토대로 다시 만들어낸 메소드이다.
-            // startActivityResult() 메소드가 실행되었던 곳으로 돌아온다.
-            // 돌아오며 결과값을 전달 받는다.
             new ActivityResultContracts.StartActivityForResult(),
             result -> {
                 Log.d("TAG", "comeback");
@@ -66,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-    // 뭔가 눌러졌을때 동작 하는 메소드 ( 콜백 개념 )
+    // MenuItem 뭔가 눌러졌을때 동작 하는 메소드 ( 콜백 개념 )
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {  // 메뉴아이템이 전부 넘어온다
 
