@@ -4,18 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".MainActivity">
 
     <include
-        layout="@layout/tool_bar"
-        android:id="@+id/toolBar"/>
+        android:id="@+id/toolBar"
+        layout="@layout/tool_bar" />
 
-<!--
-    textAlignment : 텍스트 정렬 ( 왼쪽 센터 오른쪽 )
--->
+    <!--
+        textAlignment : 텍스트 정렬 ( 왼쪽 센터 오른쪽 )
+    -->
 
     <TextView
+        android:id="@+id/tempTextView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="Hello World!"

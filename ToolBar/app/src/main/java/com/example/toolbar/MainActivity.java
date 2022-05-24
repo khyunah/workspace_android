@@ -1,16 +1,46 @@
 package com.example.toolbar;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContract;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
+
+    TextView textView;
+
+    // 값을 돌려받을때 미리 만들어 줘야한다.
+    // 콜백 메서드
+    ActivityResultLauncher<Intent> startActivityResult = registerForActivityResult(
+
+            // StartActivityForResult() : 레거시에서 사용하던 메소드이며, 그것은 Deprecated 되었고
+            // 그걸 토대로 다시 만들어낸 메소드이다.
+            // startActivityResult() 메소드가 실행되었던 곳으로 돌아온다.
+            // 돌아오며 결과값을 전달 받는다.
+            new ActivityResultContracts.StartActivityForResult(),
+            result -> {
+                Log.d("TAG", "comeback");
+                if (result.getResultCode() == Activity.RESULT_OK) {
+                    // 정상 동작
+                    Intent data = result.getData();
+                    int returnValue = data.getIntExtra("result",0);
+                    textView.setText(returnValue + "");
+                } else {
+                    // 실패
+                }
+            }
+    );
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
         // 선언하지 않으면 효과 적용이 안됨.
         setSupportActionBar(toolbar);
 
+        textView = findViewById(R.id.tempTextView);
     }
 
     // inflater : 메모리에 올려주는 역할
@@ -39,8 +70,18 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {  // 메뉴아이템이 전부 넘어온다
 
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.menuItem1:
+                Intent intent = new Intent(this, SubActivity.class);
+
+                // 값을 넘겨줄때
+                intent.putExtra("value1", 10);
+
+//                startActivity(intent);    // 값을 돌려받지 않을때 사용
+
+                // 값을 돌려받아야 할때 사용
+                startActivityResult.launch(intent);
+
                 Log.d("TAG", "1 번 클릭");
                 break;
             case R.id.menuItem2:
