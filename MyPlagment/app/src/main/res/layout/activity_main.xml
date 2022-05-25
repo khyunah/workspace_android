@@ -1,18 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text="Main Activity"
+        android:textSize="20dp" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <!--
+        xml 파일에서 fragment 를 사용하는 법
+        반드시 id 값을 지정해주어야 한다.
+        name 속성에 어떤 fragment 를 쓸지 연결해야한다. ( 아니면 앱이 실행안됨 )
+    -->
+    <fragment
+        android:id="@+id/fragmentOne"
+        android:name="com.example.myplagment.FragmentOne"
+        android:layout_width="match_parent"
+        android:layout_height="200dp" />
+
+</LinearLayout>

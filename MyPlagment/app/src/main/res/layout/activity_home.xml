@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HomeActivity">
+
+    <!--
+        LinearLayout
+        id 지정하면 orientation 지정해야함
+    -->
+    <LinearLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginBottom="20dp"
+        android:background="@color/purple_200"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnCreate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="프래그먼트 생성"
+        app:layout_constraintEnd_toStartOf="@id/btnDelete"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/container" />
+
+    <Button
+        android:id="@+id/btnDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="프래그먼트 제거"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btnCreate"
+        app:layout_constraintTop_toBottomOf="@id/container" />
+
+    <LinearLayout
+        android:id="@+id/myContainer"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginBottom="50dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnCreate" />
+
+    <Button
+        android:id="@+id/btnMyFragCreate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="플래그먼트 생성"
+        app:layout_constraintEnd_toStartOf="@id/btnDelete"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/myContainer" />
+
+    <Button
+        android:id="@+id/btnMyFragDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="플래그먼트 삭제"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btnMyFragCreate"
+        app:layout_constraintTop_toBottomOf="@id/myContainer" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
