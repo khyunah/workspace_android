@@ -10,6 +10,7 @@ import android.widget.NumberPicker;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class MainActivity2 extends AppCompatActivity {
 
@@ -40,6 +41,7 @@ public class MainActivity2 extends AppCompatActivity {
         numberPicker.setMinValue(1);
         numberPicker.setMaxValue(45);
 
+        // xml 파일에 등록된 TextView 를 리스트에 담아준다.
         numberTextViewList.add(findViewById(R.id.number1));
         numberTextViewList.add(findViewById(R.id.number2));
         numberTextViewList.add(findViewById(R.id.number3));
@@ -52,6 +54,8 @@ public class MainActivity2 extends AppCompatActivity {
         btnAdd.setOnClickListener(view -> {
             int num = numberPicker.getValue();
 
+            // 숫자하나를 선택했다면 TextView 하나를 사용한 것으로
+            // numberPickerList 의 사이즈 == numberTextViewList 의 사이즈
             TextView textView = numberTextViewList.get(numberPickerList.size());
             textView.setVisibility(View.VISIBLE);
             textView.setText(String.valueOf(num));
@@ -60,7 +64,20 @@ public class MainActivity2 extends AppCompatActivity {
         });
     }
 
-    private void getRandomNumber(){
+    private ArrayList<Integer> getRandomNumber() {
+        ArrayList<Integer> randomNumberList = new ArrayList<>();
 
+        for (int i = 1; i < 46; i++) {
+            if (numberPickerList.contains(i)) {
+                continue;
+            }
+            numberPickerList.add(i);
+        }
+
+        Collections.shuffle(randomNumberList);
+
+        randomNumberList.subList(0, 6 - numberPickerList.size());
+
+        return randomNumberList;
     }
 }
