@@ -2,11 +2,15 @@ package com.example.bottomnav;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 
+import com.example.bottomnav.utils.FragmentType;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
@@ -20,16 +24,42 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         bottomNavigation = findViewById(R.id.bottomNavigation);
+        addBottomNavigationListener();
+        replaceFragment(FragmentType.HOME);
+    }
+
+    private void replaceFragment(FragmentType type) {
+        Fragment fragment = null;
+
+        // 플래그먼트 매니저
+        FragmentManager manager = getSupportFragmentManager();
+
+        // 플래그먼트 트랜젝션
+        FragmentTransaction transaction = manager.beginTransaction();
+
+        if (type == FragmentType.HOME) {
+            fragment = new FragmentHome();
+        } else if (type == FragmentType.TV) {
+            fragment = new FragmentTv();
+        } else if (type == FragmentType.CAL) {
+            fragment = new FragmentCal();
+        }
+
+        transaction.replace(R.id.fragmentContainer, fragment);
+        transaction.commit();
+    }
+
+    private void addBottomNavigationListener() {
         bottomNavigation.setOnItemSelectedListener(item -> {
             switch (item.getItemId()) {
                 case R.id.page_home:
-                    Log.d("TAG", "11");
+                    replaceFragment(FragmentType.HOME);
                     break;
                 case R.id.page_tv:
-                    Log.d("TAG", "22");
+                    replaceFragment(FragmentType.TV);
                     break;
                 case R.id.page_calendar:
-                    Log.d("TAG", "33");
+                    replaceFragment(FragmentType.CAL);
                     break;
             }
             return true;
