@@ -10,10 +10,10 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="#2F2F30"
+        android:background="#FFFFFF"
         android:gravity="left|center_vertical"
         android:paddingLeft="10dp"
-        android:text="숙소"
+        android:text="호텔"
         android:textColor="#000000"
         android:textSize="25dp"
         android:textStyle="bold" />
