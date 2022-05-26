@@ -55,9 +55,9 @@ public class Item {
                 "고고싱", "탐나는하이와이드팬츠", "14,900원"));
         items.add(new Item("https://m.finleu.com/web/product/small/202203/d12540859b2acf097a233770a5c75567.webp",
                 "핀르", "마가렛 베이직셔츠", "29,900원"));
-        items.add(new Item("http://www.melrosemood.com/web/product/tiny/202105/ef81df091ba5874588fb1b77722d7fce.gif",
+        items.add(new Item("https://cafe24img.poxo.com/sseoqkr7/web/product/big/202205/a8c8802310a0fb9618242fbfc6333c08.jpg",
                 "멜로즈무드", "[made] 멜무롱시크슬랙스sl(5color) 22썸머ver.", "36,000원"));
-        items.add(new Item("http://www.beginning.kr/shopimages/beginning1/0670000016753.gif?1648114099",
+        items.add(new Item("https://m.benito.co.kr/web/product/big/202011/a81e81a66e8db36e6e31d9d757c8e875.jpg",
                 "프롬비기닝", "♥BEST♥트위스트 반팔카라니트 (4color)", "20,000원"));
         items.add(new Item("https://robinu.co.kr/web/product/big/202205/60de92fc1b1dd278e03fd39e30ce03ad.webp",
                 "로빈유", "[honest,you] 시즌 핀턱 슬랙스", "32,400원"));
@@ -84,7 +84,7 @@ public class Item {
                 "로로텐", "엘모아 스카시 반팔 니트", "41,400원"));
         items.add(new Item("https://image.wconcept.co.kr/productimg/image/img1/81/301280081.jpg",
                 "에스블랑", "Reighlee / See-through Pleated Dress", "218,000원"));
-        items.add(new Item("http://byladies.com/web/product/medium/202201/ac752320138d6d5b1c139ddfee8de40c.gif",
+        items.add(new Item("https://m.wingbling.co.kr/web/product/big/202012/2d80bcf18f2139dc525b30bece967ecb.jpg",
                 "바이레이디즈", "[무배]진주 레이어드 투 라인 링 귀걸이/은침", "8,600원"));
 
         return items;
