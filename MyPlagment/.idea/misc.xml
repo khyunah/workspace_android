@@ -3,6 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/boot/workspace_android/MyPlagment/app/src/main/res/layout/activity_bottom_icon.xml" value="0.2359375" />
+        <entry key="..\:/boot/workspace_android/MyPlagment/app/src/main/res/layout/fragment_chat.xml" value="0.2359375" />
+        <entry key="..\:/boot/workspace_android/MyPlagment/app/src/main/res/layout/fragment_home.xml" value="0.2359375" />
+        <entry key="..\:/boot/workspace_android/MyPlagment/app/src/main/res/layout/fragment_my_banner.xml" value="0.2359375" />
+        <entry key="..\:/boot/workspace_android/MyPlagment/app/src/main/res/layout/fragment_one.xml" value="0.2359375" />
+        <entry key="..\:/boot/workspace_android/MyPlagment/app/src/main/res/layout/fragment_place.xml" value="0.2359375" />
         <entry key="..\:/workspace_android/MyPlagment/app/src/main/res/drawable/ic_baseline_auto_awesome_motion_24.xml" value="0.2435" />
         <entry key="..\:/workspace_android/MyPlagment/app/src/main/res/layout/activity_bottom_icon.xml" value="0.33" />
         <entry key="..\:/workspace_android/MyPlagment/app/src/main/res/layout/activity_fragment_my_banner.xml" value="0.35260416666666666" />
