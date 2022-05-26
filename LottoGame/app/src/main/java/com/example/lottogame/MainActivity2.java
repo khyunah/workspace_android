@@ -8,6 +8,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.NumberPicker;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -23,6 +26,8 @@ public class MainActivity2 extends AppCompatActivity {
 
     ArrayList<TextView> numberTextViewList = new ArrayList<>();
     ArrayList<Integer> numberPickerList = new ArrayList<>();
+
+    boolean isCreate = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,25 +60,45 @@ public class MainActivity2 extends AppCompatActivity {
         btnAdd.setOnClickListener(view -> {
             int num = numberPicker.getValue();
 
-            // 숫자하나를 선택했다면 TextView 하나를 사용한 것으로
-            // numberPickerList 의 사이즈 == numberTextViewList 의 사이즈
-            TextView textView = numberTextViewList.get(numberPickerList.size());
-            textView.setVisibility(View.VISIBLE);
-            textView.setText(String.valueOf(num));
+            if (numberPickerList.contains(num)) {
+                Toast.makeText(this, "반복된 숫자 입니다. 다시 선택해주세요.", Toast.LENGTH_SHORT).show();
+            } else {
+                // 숫자하나를 선택했다면 TextView 하나를 사용한 것으로
+                // numberPickerList 의 사이즈 == numberTextViewList 의 사이즈
+                TextView textView = numberTextViewList.get(numberPickerList.size());
+                textView.setVisibility(View.VISIBLE);
+                textView.setText(String.valueOf(num));
 
-            numberPickerList.add(num);
+                numberPickerList.add(num);
+            }
+
         });
 
         btnCreate.setOnClickListener(view -> {
-            List<Integer> numberList = getRandomNumber();
-            numberList.addAll(numberPickerList);
+            if (!isCreate) {
+                List<Integer> numberList = getRandomNumber();
+                numberList.addAll(numberPickerList);
+                Collections.sort(numberList);
 
-            for (int i = 0; i < numberList.size(); i++) {
-                // 반환하는 객체가 Integer 이기때문에 String 으로 변환
-                numberTextViewList.get(i).setText(String.valueOf(numberList.get(i)));
-                numberTextViewList.get(i).setVisibility(View.VISIBLE);
+                for (int i = 0; i < numberList.size(); i++) {
+                    // 반환하는 객체가 Integer 이기때문에 String 으로 변환
+                    numberTextViewList.get(i).setText(String.valueOf(numberList.get(i)));
+                    numberTextViewList.get(i).setVisibility(View.VISIBLE);
+                }
+            } else {
+                Toast.makeText(this, "초기화후 다시 시도해주세요.", Toast.LENGTH_SHORT).show();
             }
+            isCreate = true;
         });
+
+        btnInit.setOnClickListener(vie -> {
+            isCreate = false;
+            for (TextView tv : numberTextViewList) {
+                tv.setVisibility(View.GONE);
+            }
+            numberPickerList.clear();
+        });
+
     }
 
     // subList 는 List 로 리턴한다.
