@@ -45,11 +45,11 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> 
 
         Glide.with(context)
                 .load(item.getImageUrl())
-                .into(holder.itemImage);
+                .into(holder.itemImageView);
 
-        holder.storeName.setText(item.getStoreName());
-        holder.name.setText(item.getName());
-        holder.price.setText(item.getPrice());
+        holder.storeNameTextView.setText(item.getStoreName());
+        holder.nameTextView.setText(item.getName());
+        holder.priceTextView.setText(item.getPrice());
     }
 
     @Override
@@ -60,22 +60,18 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
         // 세팅을 해야하는 컴포넌트 타입으로 변수 선언
-        ImageView itemImage;
-        TextView storeName;
-        TextView name;
-        TextView price;
+        ImageView itemImageView;
+        TextView storeNameTextView;
+        TextView nameTextView;
+        TextView priceTextView;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            itemImage = itemView.findViewById(R.id.itemImageView);
-            storeName = itemView.findViewById(R.id.storeNameTextView);
-            name = itemView.findViewById(R.id.nameTextView);
-            price = itemView.findViewById(R.id.priceTextView);
-
-            itemView.setOnClickListener(view -> {
-                Toast.makeText(view.getContext(), name + ", 품절", Toast.LENGTH_SHORT).show();
-            });
+            itemImageView = itemView.findViewById(R.id.itemImageView);
+            storeNameTextView = itemView.findViewById(R.id.storeNameTextView);
+            nameTextView = itemView.findViewById(R.id.nameTextView);
+            priceTextView = itemView.findViewById(R.id.priceTextView);
 
         }
     }
