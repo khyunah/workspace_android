@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 public class MainActivity2 extends AppCompatActivity {
 
@@ -62,22 +63,32 @@ public class MainActivity2 extends AppCompatActivity {
 
             numberPickerList.add(num);
         });
+
+        btnCreate.setOnClickListener(view -> {
+            List<Integer> numberList = getRandomNumber();
+            numberList.addAll(numberPickerList);
+
+            for (int i = 0; i < numberList.size(); i++) {
+                // 반환하는 객체가 Integer 이기때문에 String 으로 변환
+                numberTextViewList.get(i).setText(String.valueOf(numberList.get(i)));
+                numberTextViewList.get(i).setVisibility(View.VISIBLE);
+            }
+        });
     }
 
-    private ArrayList<Integer> getRandomNumber() {
+    // subList 는 List 로 리턴한다.
+    private List<Integer> getRandomNumber() {
         ArrayList<Integer> randomNumberList = new ArrayList<>();
 
         for (int i = 1; i < 46; i++) {
             if (numberPickerList.contains(i)) {
                 continue;
             }
-            numberPickerList.add(i);
+            randomNumberList.add(i);
         }
 
         Collections.shuffle(randomNumberList);
 
-        randomNumberList.subList(0, 6 - numberPickerList.size());
-
-        return randomNumberList;
+        return randomNumberList.subList(0, 6 - numberPickerList.size());
     }
 }
