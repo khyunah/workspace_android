@@ -17,6 +17,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.example.recyclerview.R;
+import com.example.recyclerview.interfaces.OnFoodItemClickListener;
 import com.example.recyclerview.models.Food;
 
 import java.util.ArrayList;
@@ -29,16 +30,19 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.MyViewHolder> 
     ArrayList<Food> list;
     // 어느 뷰에서 쓸지 정보를 받을 context
     Context context;
+    OnFoodItemClickListener onFoodItemClickListener;
 
-    public FoodAdapter(ArrayList<Food> list, Context context) {
+    public FoodAdapter(ArrayList<Food> list, Context context, OnFoodItemClickListener onFoodItemClickListener) {
         this.list = list;
         this.context = context;
+        this.onFoodItemClickListener = onFoodItemClickListener;
     }
 
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         // new ViewHolder 생성해 라는 메소드
+
         View itemView = LayoutInflater
                 .from(context)
                 .inflate(R.layout.item_food, parent, false);
@@ -89,9 +93,13 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.MyViewHolder> 
             detailTextView = itemView.findViewById(R.id.detailTextView);
 
             itemView.setOnClickListener(view -> {
+
                 Toast.makeText(view.getContext(),
                         "TEST" + getLayoutPosition(),
                         Toast.LENGTH_SHORT).show();
+
+                // 콜백 메서드 호출
+                onFoodItemClickListener.onItemClicked(itemView, getLayoutPosition());
             });
         }
     } // end of inner class

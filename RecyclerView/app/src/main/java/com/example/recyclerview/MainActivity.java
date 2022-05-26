@@ -5,9 +5,13 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 
 import com.example.recyclerview.adapter.FoodAdapter;
+import com.example.recyclerview.interfaces.OnFoodItemClickListener;
 import com.example.recyclerview.models.Food;
 
 import java.util.ArrayList;
@@ -30,6 +34,19 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        FoodAdapter foodAdapter = new FoodAdapter(Food.getSampleData(), this, new OnFoodItemClickListener() {
+            @Override
+            public void onItemClicked(View view, int position) {
+                // 여기가 호출되어 진다.
+                Log.d("TAG", "넘겨받은 position : " + position);
+                Intent intent = new Intent(getApplication(), DetailActivity.class);
+                // getApplication : this 대신 쓰는 녀석
+                intent.putExtra("obj", Food.getSampleData().get(position));
+                startActivity(intent);
+
+            }
+        });
+
         // 통신 JSON
         ArrayList<Food> listSample = Food.getSampleData();
 
@@ -42,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
         // 뷰와 데이터를 연결시키기 위한 방법 중 하나.
 
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
-        recyclerView.setAdapter(new FoodAdapter(Food.getSampleData(), this));
+        recyclerView.setAdapter(foodAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 //        recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
     }

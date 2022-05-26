@@ -1,8 +1,9 @@
 package com.example.recyclerview.models;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Food {
+public class Food implements Serializable { // Serializable 직렬화를 해줌. 바이트단위로 던져줌 . 받는곳에서는 역직렬화를 해서 바이트에서 오브젝트 단위로 받아짐
     private String thumbnail;
     private String title;
     private String subTitle;
