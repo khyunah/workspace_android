@@ -21,8 +21,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // 각 컴포넌트 들을 한번에 들고올수 있게 xml 파일 들고올수 있는 LayoutInflater
+        // 뷰에 컴포넌트를 올릴수 있도록 메인 xml 파일을 메모리에 올리는 작업
         LayoutInflater inflater = LayoutInflater.from(this);    // 초기화 작업 ( new )와 같은 작업이다.
+//        LayoutInflater inflater = getLayoutInflater();  // 위와 같은 말
 
         // 뷰를 위치 시킬 컨테이너 가져오기
         LinearLayout container = findViewById(R.id.fruitContainer);
