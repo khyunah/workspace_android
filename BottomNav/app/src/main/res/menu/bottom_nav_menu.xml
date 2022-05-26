@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/itemChat"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_chat_bubble_outline_24"
+        android:title="chat" />
+
+    <item
+        android:id="@+id/itemCloud"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_cloud_circle_24"
+        android:title="cloud" />
+
+    <item
+        android:id="@+id/itemCollection"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_collections_24"
+        android:title="collection" />
+
+    <item
+        android:id="@+id/itemCheck"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_done_24"
+        android:title="check" />
+
+    <item
+        android:id="@+id/itemFavorite"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_favorite_border_24"
+        android:title="favorite" />
+
+
+</menu>
