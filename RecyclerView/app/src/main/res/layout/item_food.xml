@@ -41,9 +41,11 @@
             android:id="@+id/titleTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:ellipsize="end"
+            android:ellipsize="marquee"
+            android:focusable="true"
             android:gravity="start|bottom"
-            android:maxLines="2"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:singleLine="true"
             android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
             android:textSize="20dp"
             android:textStyle="bold" />

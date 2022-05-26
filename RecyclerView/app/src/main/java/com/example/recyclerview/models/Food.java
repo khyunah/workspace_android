@@ -52,7 +52,7 @@ public class Food implements Serializable { // Serializable 직렬화를 해줌.
     public static ArrayList<Food> getSampleData() {
         ArrayList<Food> foods = new ArrayList<>();
 
-        foods.add(new Food("https://cdn.pixabay.com/photo/2014/11/05/15/57/salmon-518032__480.jpg", "Food1", "SubTitle1", "detail"));
+        foods.add(new Food("https://cdn.pixabay.com/photo/2014/11/05/15/57/salmon-518032__480.jpg", "Food1Food1Food1Food1Food1Food1Food1Food1Food1Food1Food1Food1Food1Food1Food1Food1Food1Food1", "SubTitle1", "detail"));
         foods.add(new Food("https://cdn.pixabay.com/photo/2014/11/05/15/57/salmon-518032__480.jpg", "Food2", "SubTitle1", "detail"));
         foods.add(new Food("https://cdn.pixabay.com/photo/2014/11/05/15/57/salmon-518032__480.jpg", "Food3", "SubTitle1", "detail"));
         foods.add(new Food("https://cdn.pixabay.com/photo/2014/11/05/15/57/salmon-518032__480.jpg", "Food4", "SubTitle1", "detail"));

@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/boot/workspace_android/RecyclerView/app/src/main/res/layout/item_food.xml" value="0.2359375" />
+        <entry key="..\:/boot/workspace_android/RecyclerView/app/src/main/res/layout/layout_weight.xml" value="0.221875" />
         <entry key="..\:/workspace_android/RecyclerView/app/src/main/res/layout/activity_main.xml" value="0.35260416666666666" />
         <entry key="..\:/workspace_android/RecyclerView/app/src/main/res/layout/item_food.xml" value="0.35260416666666666" />
       </map>

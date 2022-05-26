@@ -89,6 +89,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.MyViewHolder> 
 
             thumbnail = itemView.findViewById(R.id.thumbnailImageView);
             titleTextView = itemView.findViewById(R.id.titleTextView);
+            titleTextView.setSelected(true);
             subTitleTextView = itemView.findViewById(R.id.subTitleTextView);
             detailTextView = itemView.findViewById(R.id.detailTextView);
 
