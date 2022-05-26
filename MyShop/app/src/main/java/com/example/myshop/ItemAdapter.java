@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.myshop.interfaces.OnItemClickListener;
 
 import org.w3c.dom.Text;
 
@@ -21,10 +22,12 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> 
 
     ArrayList<Item> items = new ArrayList<>();
     Context context;
+    OnItemClickListener onItemClickListener;
 
-    public ItemAdapter(ArrayList<Item> items, Context context) {
+    public ItemAdapter(ArrayList<Item> items, Context context, OnItemClickListener onItemClickListener) {
         this.items = items;
         this.context = context;
+        this.onItemClickListener = onItemClickListener;
     }
 
     @NonNull
@@ -72,6 +75,10 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> 
             storeNameTextView = itemView.findViewById(R.id.storeNameTextView);
             nameTextView = itemView.findViewById(R.id.nameTextView);
             priceTextView = itemView.findViewById(R.id.priceTextView);
+
+            itemImageView.setOnClickListener(view -> {
+                onItemClickListener.onItemClicked(itemView, getLayoutPosition());
+            });
 
         }
     }
