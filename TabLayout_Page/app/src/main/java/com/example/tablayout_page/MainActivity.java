@@ -32,12 +32,14 @@ import com.google.android.material.tabs.TabLayout;
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = MainActivity.class.getName();
-    static final int TAB_COUNT = 3;
+    public static final int TAB_COUNT = 3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        ViewPager viewPager = findViewById(R.id.viewPager);
 
         // 자바에서 동적으로 탭 만들어줄때
         // 탭 레이아웃 안에 새로운 탭을 만들겠다. 하는 코드
@@ -54,8 +56,10 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                int position = tab.getPosition();
+                int position = tab.getPosition();   // 0, 1, 2
 
+                // 스와이프 시켜주는 뷰페이저의 화면을 직접 세팅 하는것
+                viewPager.setCurrentItem(position);
             }
 
             @Override
@@ -72,9 +76,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        ViewPager viewPager = findViewById(R.id.viewPager);
-        MyPagerAdapter myPagerAdapter = new MyPagerAdapter(getSupportFragmentManager(), TAB_COUNT);
+
+        MyPagerAdapter myPagerAdapter = new MyPagerAdapter(getSupportFragmentManager(), 3);
         viewPager.setAdapter(myPagerAdapter);
+
+        // 뷰 페이저와 탭 연동
+        // TabLayout.TabLayoutOnPageChangeListener : 스와이핑을 감지하는 녀석. 연결해준다
+        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+        // 하지만 탭 클릭시 는 연결이 안되었음.
+
     }
 }
 
@@ -84,10 +94,12 @@ class MyPagerAdapter extends FragmentPagerAdapter {
         super(fm, behavior);
     }
 
+    // 스와이프할때 보일 플래그먼트 설정 해주기
     @NonNull
     @Override
     public Fragment getItem(int position) {
         Fragment fragment = null;
+        // 생성할때 한번에 올려준다
         switch (position) {
             case 0:
                 fragment = new FragmentOne();
@@ -104,6 +116,7 @@ class MyPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
+        // 여기의 갯수만큼 페이저가 생성된다.
         return MainActivity.TAB_COUNT;
     }
 }
