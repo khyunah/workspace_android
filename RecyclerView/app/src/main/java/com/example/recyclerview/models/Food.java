@@ -49,6 +49,16 @@ public class Food implements Serializable { // Serializable 직렬화를 해줌.
         this.detail = detail;
     }
 
+    @Override
+    public String toString() {
+        return "Food{" +
+                "thumbnail='" + thumbnail + '\'' +
+                ", title='" + title + '\'' +
+                ", subTitle='" + subTitle + '\'' +
+                ", detail='" + detail + '\'' +
+                '}';
+    }
+
     public static ArrayList<Food> getSampleData() {
         ArrayList<Food> foods = new ArrayList<>();
 
