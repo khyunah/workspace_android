@@ -42,22 +42,23 @@ public class MainActivity extends AppCompatActivity {
         ViewPager viewPager = findViewById(R.id.viewPager);
         TabLayout tabLayout = findViewById(R.id.tabLayout);
 
+        /* 1. 탭만들기 */
         // 자바에서 동적으로 탭 만들어줄때
         // 탭 레이아웃 안에 새로운 탭을 만들겠다. 하는 코드
         tabLayout.addTab(tabLayout.newTab().setText("ONE"));
         tabLayout.addTab(tabLayout.newTab().setText("TWO"));
         tabLayout.addTab(tabLayout.newTab().setText("THREE"));
 
-        // 클릭시 이벤트 리스너 등록하는 방법 .addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {});
+        /* 2. 탭에 이벤트 등록*/
+        // 클릭시 이벤트 리스너 등록하는 방법
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-
-            // 1번 탭에서 2번 탭으로 진행할때 1번탭이 사라질 일이 있다면 onTabUnselected 에서 작성
-            // 새로운 탭이 선택되었을때는 onTabSelected 에서 작성 하면 된다는 결론.
 
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 int position = tab.getPosition();   // 0, 1, 2
+                Log.d(TAG, position + "눌림");
 
+                /* 6. 탭클릭시 뷰페이저와 연동하기 */
                 // 스와이프 시켜주는 뷰페이저의 화면을 직접 세팅 하는것
                 viewPager.setCurrentItem(position);
             }
@@ -65,29 +66,35 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
                 int position = tab.getPosition();
-
+                Log.d(TAG, position + "비활성화");
             }
 
             // 활성화 된거 한번 더 눌렀을 때
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
                 int position = tab.getPosition();
-
+                Log.d(TAG, position + "한번더눌려짐");
             }
         });
 
-
+        /* 4. 뷰페이저어댑터 객체 메모리에 올려서 뷰페이저에 셋팅 */
+        // 뷰 페이저에 플래그먼트 넣은 객체 생성
         MyPagerAdapter myPagerAdapter = new MyPagerAdapter(getSupportFragmentManager(), 3);
+        // 뷰페이저에 위의 객체 셋팅해주기
         viewPager.setAdapter(myPagerAdapter);
 
-        // 뷰 페이저와 탭 연동
+        /* 5. 뷰 페이저와 탭 연동 */
         // TabLayout.TabLayoutOnPageChangeListener : 스와이핑을 감지하는 녀석. 연결해준다
+        // 스와이핑 할때 탭의 position 도 같이 이동( selected ) 된다.
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
-        // 하지만 탭 클릭시 는 연결이 안되었음.
 
+        // 하지만 탭 클릭시 는 연결이 안되었음.
     }
 }
 
+/* 3. 뷰 페이저에 플래그먼트 생성하기 */
+// ViewPager 에 올릴 플래그먼트를 세팅한것이고, 탭과 연결하기 위한 연결자역할
+// 이 클래스에서 플래그먼트를 메모리에 올려준다.
 class MyPagerAdapter extends FragmentPagerAdapter {
 
     public MyPagerAdapter(@NonNull FragmentManager fm, int behavior) {  // behavior : 몇개 있는지
@@ -99,7 +106,8 @@ class MyPagerAdapter extends FragmentPagerAdapter {
     @Override
     public Fragment getItem(int position) {
         Fragment fragment = null;
-        // 생성할때 한번에 올려준다
+        // 생성할때 한번만 올려준다
+        // position 의 index 만큼만 돌아감.
         switch (position) {
             case 0:
                 fragment = new FragmentOne();
