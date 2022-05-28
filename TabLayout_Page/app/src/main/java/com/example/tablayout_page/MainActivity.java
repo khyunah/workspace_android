@@ -40,10 +40,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         ViewPager viewPager = findViewById(R.id.viewPager);
+        TabLayout tabLayout = findViewById(R.id.tabLayout);
 
         // 자바에서 동적으로 탭 만들어줄때
         // 탭 레이아웃 안에 새로운 탭을 만들겠다. 하는 코드
-        TabLayout tabLayout = findViewById(R.id.tabLayout);
         tabLayout.addTab(tabLayout.newTab().setText("ONE"));
         tabLayout.addTab(tabLayout.newTab().setText("TWO"));
         tabLayout.addTab(tabLayout.newTab().setText("THREE"));
