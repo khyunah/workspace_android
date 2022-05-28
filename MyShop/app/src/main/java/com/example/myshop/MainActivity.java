@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClicked(View view, int position) {
                 Intent intent = new Intent(getApplication(), DetailActivity.class);
-                intent.putExtra("image", Item.getSampleData().get(position).getImageUrl());
+                intent.putExtra("getItem", Item.getSampleData().get(position));
                 startActivity(intent);
             }
         }));
