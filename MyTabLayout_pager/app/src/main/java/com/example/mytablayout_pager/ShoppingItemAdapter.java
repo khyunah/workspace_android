@@ -11,6 +11,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 
 public class ShoppingItemAdapter extends RecyclerView.Adapter<ShoppingItemAdapter.ViewHolder> {
@@ -35,7 +37,10 @@ public class ShoppingItemAdapter extends RecyclerView.Adapter<ShoppingItemAdapte
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         ShoppingItem shoppingItem = shoppingItems.get(position);
 
-        holder.imageView.setImageResource(R.drawable.item1);
+//        Glide.with(context)
+//                .load(shoppingItem.getItemImage())
+//                .into(holder.imageView);
+
         holder.textView.setText(shoppingItem.getItemName());
     }
 

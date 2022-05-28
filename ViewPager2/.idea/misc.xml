@@ -3,6 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/boot/workspace_android/ViewPager2/app/src/main/res/drawable/bg_indicator_active.xml" value="0.178" />
+        <entry key="..\:/boot/workspace_android/ViewPager2/app/src/main/res/drawable/bg_indicator_inactive.xml" value="0.178" />
+        <entry key="..\:/boot/workspace_android/ViewPager2/app/src/main/res/drawable/gradient_image_slider.xml" value="0.178" />
+        <entry key="..\:/boot/workspace_android/ViewPager2/app/src/main/res/layout/activity_main.xml" value="0.2359375" />
+        <entry key="..\:/boot/workspace_android/ViewPager2/app/src/main/res/layout/item_image_slider.xml" value="0.2359375" />
         <entry key="..\:/workspace_android/ViewPager2/app/src/main/res/drawable/bg_indicator_active.xml" value="0.273" />
         <entry key="..\:/workspace_android/ViewPager2/app/src/main/res/drawable/bg_indicator_inactive.xml" value="0.273" />
         <entry key="..\:/workspace_android/ViewPager2/app/src/main/res/drawable/gradient_image_slider.xml" value="0.273" />
