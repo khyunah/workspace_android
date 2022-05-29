@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/firstItem1"
+        android:icon="@drawable/icon_place_fill"
+        android:title="내 동네 설정" />
+    <item
+        android:id="@+id/firstItem2"
+        android:icon="@drawable/icon_village"
+        android:title="동네 인증하기" />
+
+    <item
+        android:id="@+id/firstItem3"
+        android:icon="@drawable/icon_tag"
+        android:title="키워드 알림" />
+
+    <item
+        android:id="@+id/firstItem4"
+        android:icon="@drawable/icon_total"
+        android:title="모아보기" />
+
+</menu>
