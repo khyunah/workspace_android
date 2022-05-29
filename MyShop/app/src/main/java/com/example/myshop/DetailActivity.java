@@ -17,11 +17,11 @@ public class DetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detail);
 
         Intent intent = getIntent();
-        String imageUrl = intent.getStringExtra("image");
+        Item getItem = (Item)intent.getSerializableExtra("getItem");
 
         ImageView imageView = findViewById(R.id.imageView);
         Glide.with(this)
-                .load(imageUrl)
+                .load(getItem.getImageUrl())
                 .into(imageView);
     }
 }

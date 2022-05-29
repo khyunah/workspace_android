@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="style_bottom_menu_text_size_inactive" parent="@style/Base.TextAppearance.AppCompat.Title">
+        <item name="android:textSize">10dp</item>
+    </style>
+</resources>

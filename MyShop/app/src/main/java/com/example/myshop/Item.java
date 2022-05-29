@@ -1,8 +1,9 @@
 package com.example.myshop;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Item {
+public class Item implements Serializable {
     private String imageUrl;
     private String storeName;
     private String name;

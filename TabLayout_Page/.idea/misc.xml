@@ -3,6 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/boot/workspace_android/TabLayout_Page/app/src/main/res/layout/activity_main.xml" value="0.2359375" />
+        <entry key="..\:/boot/workspace_android/TabLayout_Page/app/src/main/res/layout/activity_main2.xml" value="0.2359375" />
+        <entry key="..\:/boot/workspace_android/TabLayout_Page/app/src/main/res/layout/activity_view_pager_ex.xml" value="0.25343999226562525" />
+        <entry key="..\:/boot/workspace_android/TabLayout_Page/app/src/main/res/layout/tab_layout_ex.xml" value="0.2359375" />
         <entry key="..\:/workspace_android/TabLayout_Page/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
         <entry key="..\:/workspace_android/TabLayout_Page/app/src/main/res/layout/fragment_one.xml" value="0.35260416666666666" />
         <entry key="..\:/workspace_android/TabLayout_Page/app/src/main/res/layout/fragment_three.xml" value="0.36666666666666664" />
