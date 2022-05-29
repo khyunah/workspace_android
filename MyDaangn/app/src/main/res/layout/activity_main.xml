@@ -12,13 +12,13 @@
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/topAppBar"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
+        android:layout_height="wrap_content"
         android:background="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:menu="@menu/top_menu"
         app:title="나의 당근"
-        app:titleTextAppearance="@style/style_menu_textsize" />
+        app:titleTextAppearance="@style/style_top_menu_text_size" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/firstCardView"
@@ -114,6 +114,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:itemIconSize="16dp"
+            app:itemTextAppearance="@style/style_menu_text_size"
             app:itemTextColor="@color/black"
             app:menu="@menu/second_cardview_menu" />
 
@@ -132,6 +133,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:itemIconSize="16dp"
+            app:itemTextAppearance="@style/style_menu_text_size"
             app:itemTextColor="@color/black"
             app:menu="@menu/third_cardview_menu" />
 
@@ -149,6 +151,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:itemIconSize="20dp"
+            app:itemTextAppearance="@style/style_menu_text_size"
             app:itemTextColor="@color/black"
             app:menu="@menu/fourth_cardview_menu" />
 
@@ -161,9 +164,12 @@
         android:id="@+id/bottomNav"
         android:layout_width="match_parent"
         android:layout_height="55dp"
+        android:paddingVertical="3dp"
         app:itemBackground="@color/white"
         app:itemIconSize="17dp"
         app:itemIconTint="@color/menu_colors"
+        app:itemTextAppearanceActive="@style/style_bottom_menu_text_size_active"
+        app:itemTextAppearanceInactive="@style/style_bottom_menu_text_size_inactive"
         app:itemTextColor="@color/menu_colors"
         app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent"
