@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:menu="@menu/top_menu"
         app:title="나의 당근"
-        app:titleTextAppearance="@style/my_menu_text_size" />
+        app:titleTextAppearance="@style/style_menu_textsize" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/firstCardView"
@@ -54,7 +54,6 @@
                 android:layout_marginTop="5dp"
                 android:text="판매내역"
                 android:textColor="@color/black"
-                android:textSize=""
                 app:layout_constraintEnd_toEndOf="@id/imageSellList"
                 app:layout_constraintStart_toStartOf="@id/imageSellList"
                 app:layout_constraintTop_toBottomOf="@id/imageSellList" />
@@ -114,7 +113,6 @@
         <com.google.android.material.navigation.NavigationView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingVertical="3dp"
             app:itemIconSize="16dp"
             app:itemTextColor="@color/black"
             app:menu="@menu/second_cardview_menu" />
@@ -133,7 +131,6 @@
         <com.google.android.material.navigation.NavigationView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingVertical="3dp"
             app:itemIconSize="16dp"
             app:itemTextColor="@color/black"
             app:menu="@menu/third_cardview_menu" />
@@ -145,7 +142,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toTopOf="@id/bottomNav"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/thirdCardView">
 
