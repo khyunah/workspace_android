@@ -49,6 +49,10 @@ public class MainActivity extends AppCompatActivity {
         // 기본적으로 안드로이드는 메인스레드 (원 스레드) 만 작동을한다.
         // 메인스레드는 UI를 그리는데 집중하기때문에 예외가 발생한다.
         // 스레드를 만들어서 사용해줘야 한다.
+
+        // 안드로이드는 스레드간의 통신이 안되게 되어있다.
+        // 데이터를 통신 하기 위해서는 핸들러를 이용해야 한다.
+        // ( 메세지를 만들어서 통신한다. )
     }
 
     private void httpGetTest() {
@@ -94,17 +98,17 @@ public class MainActivity extends AppCompatActivity {
 //                Log.d("TAG", todo1.title);
 
                 // 문자열을 배열타입으로 변환하기
-                Todo[] todos = new Gson().fromJson(reader, Todo[].class);
+//                Todo[] todos = new Gson().fromJson(reader, Todo[].class);
 //                Log.d("TAG", todos.toString());
 
                 // 문자열을 리스트타입으로 변환하기
-                Type todoListType = new TypeToken<ArrayList<Todo>>() {}.getType();
-                ArrayList<Todo> todoList = new Gson().fromJson(reader, todoListType);
+//                Type todoListType = new TypeToken<ArrayList<Todo>>() {}.getType();
+//                ArrayList<Todo> todoList = new Gson().fromJson(reader, todoListType);
 
-                for (Todo t : todoList) {
-                    Log.d("TAG", t.userId + " : userId");
-                    Log.d("TAG", t.title + " : title");
-                }
+//                for (Todo t : todoList) {
+//                    Log.d("TAG", t.userId + " : userId");
+//                    Log.d("TAG", t.title + " : title");
+//                }
 
                 Type photoListType = new TypeToken<ArrayList<Photo>>() {
                 }.getType();
