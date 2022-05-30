@@ -3,6 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.myhttp">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!--
+        android:usesCleartextTraffic="true"
+
+        안드로이드 9.0 부터 네트워크 통신 http 를 막았다.
+        통신을 하려면 주소가 https 이여야만 통신 가능하다.
+        하지만 usesCleartextTraffic 속성을 true 로 주게되면 http 통신이 가능하다.
+    -->
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -12,6 +20,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyHttp"
+        android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
             android:name=".MainActivity"
