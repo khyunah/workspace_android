@@ -33,6 +33,7 @@ public class DiaryActivity2 extends AppCompatActivity {
             editor.apply();
 
             Log.d("TAG", "글자저장했음");
+            Log.d("TAG", "");
         };
 
         /* 2 */
@@ -45,21 +46,28 @@ public class DiaryActivity2 extends AppCompatActivity {
         diaryEditText.addTextChangedListener(new TextWatcher() {    // TextWatcher : 텍스트를 지켜본다라는 느낌
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
+                Log.d("TAG", "[ beforeTextChanged ]");
+                Log.d("TAG", "charSequences : " + s);
+                Log.d("TAG", "start : " + start);
+                Log.d("TAG", "count : " + count);
+                Log.d("TAG", "after : " + after);
+                Log.d("TAG", "");
             }
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
+                Log.d("TAG", "[ onTextChanged ]");
                 Log.d("TAG", "charSequences : " + s);
                 Log.d("TAG", "start : " + start);
                 Log.d("TAG", "before : " + before);
                 Log.d("TAG", "count : " + count);
+                Log.d("TAG", "");
 
                 /* 1 - 1*/
-                SharedPreferences diaryContent = getSharedPreferences("diaryContent", Context.MODE_PRIVATE);
-                SharedPreferences.Editor editor = diaryContent.edit();
-                editor.putString("content1", diaryEditText.getText().toString());
-                editor.apply();
+//                SharedPreferences diaryContent = getSharedPreferences("diaryContent", Context.MODE_PRIVATE);
+//                SharedPreferences.Editor editor = diaryContent.edit();
+//                editor.putString("content1", diaryEditText.getText().toString());
+//                editor.apply();
 
                 /* 3 */
                 // IO 는 메모리를 많이 잡아먹기 때문에 메인 스레드가 감당하기에는 예상치 못한 오류가 발생한다.
@@ -67,18 +75,20 @@ public class DiaryActivity2 extends AppCompatActivity {
 
                 /* 3 - 2 */
                 // 이벤트가 들어올때마다 마다 실행하는 post
-//                handler.post(runnable);
+                handler.post(runnable);
 
                 /* 3 - 3 */
                 // 글자가 들어왔을때 콜백을 지워버리는 역할
-                handler.removeCallbacks(runnable);
-
-                handler.postDelayed(runnable, 2000);
+//                handler.removeCallbacks(runnable);
+//
+//                handler.postDelayed(runnable, 2000);
             }
 
             @Override
             public void afterTextChanged(Editable s) {
-
+                Log.d("TAG", "[ afterTextChanged ]");
+                Log.d("TAG", s.toString());
+                Log.d("TAG", "");
             }
         });
     }
