@@ -4,6 +4,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -126,7 +127,8 @@ public class MainActivity extends AppCompatActivity {
                 .setPositiveButton("닫기", (dialog, i) -> {   // 확인 버튼 이름
                     // 닫기 버튼 눌르면 실행
                     // 동작 정의하지 않을 것임.
-                    Log.d("TAG", "1111");
+                    Log.d("TAG", "dialog : " + dialog + ", i : " + i);
+                    Log.d("TAG", builder.toString());
                 });
 
         builder.show();
