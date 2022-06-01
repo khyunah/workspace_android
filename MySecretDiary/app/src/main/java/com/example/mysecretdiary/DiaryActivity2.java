@@ -50,15 +50,21 @@ public class DiaryActivity2 extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
+                Log.d("TAG", "charSequences : " + s);
+                Log.d("TAG", "start : " + start);
+                Log.d("TAG", "before : " + before);
+                Log.d("TAG", "count : " + count);
+
                 /* 1 - 1*/
-//                SharedPreferences diaryContent = getSharedPreferences("diaryContent", Context.MODE_PRIVATE);
-//                SharedPreferences.Editor editor = diaryContent.edit();
-//                editor.putString("content1", diaryEditText.getText().toString());
-//                editor.apply();
+                SharedPreferences diaryContent = getSharedPreferences("diaryContent", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = diaryContent.edit();
+                editor.putString("content1", diaryEditText.getText().toString());
+                editor.apply();
 
                 /* 3 */
                 // IO 는 메모리를 많이 잡아먹기 때문에 메인 스레드가 감당하기에는 예상치 못한 오류가 발생한다.
                 // 서브 스레드를 따로 돌려주기
+
                 /* 3 - 2 */
                 // 이벤트가 들어올때마다 마다 실행하는 post
 //                handler.post(runnable);

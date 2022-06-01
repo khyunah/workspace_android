@@ -1,10 +1,12 @@
 package com.example.mysecretdiary;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.NumberPicker;
@@ -22,6 +24,8 @@ public class MainActivity2 extends AppCompatActivity {
     private Button changePasswordButton;
 
     private SharedPreferences myPasswordDB;
+
+    private boolean changePasswordMode = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +58,11 @@ public class MainActivity2 extends AppCompatActivity {
 
         // 다이어리 들어가기를 눌렀을때
         openButton.setOnClickListener(v -> {
-            Toast.makeText(this, "들어가기 버튼을 눌렀습니다.", Toast.LENGTH_SHORT).show();
+
+            if(changePasswordMode){
+                Toast.makeText(this, "비밀번호 변경중입니다.", Toast.LENGTH_SHORT).show();
+                return;
+            }
 
             String getNowNumberPickerData = getNowNumberPickerData();
 
@@ -64,16 +72,39 @@ public class MainActivity2 extends AppCompatActivity {
                 // 화면 전환 해주기
                 Intent intent = new Intent(this, DiaryActivity2.class);
                 startActivity(intent);
+            } else {
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
+                builder.setTitle("실패")
+                        .setMessage("비밀번호가 일치하지 않습니다.")
+                        .setPositiveButton("확인", (dialog, which) -> {})
+                        .show();
             }
         });
 
         changePasswordButton.setOnClickListener(v -> {
-            SharedPreferences.Editor editor = myPasswordDB.edit();
-            editor.putString(PASSWORD, getNowNumberPickerData());
-            editor.apply();
-        });
 
+            String getNumberPicker = getNowNumberPickerData();
+
+            if (changePasswordMode) {
+
+                SharedPreferences.Editor editor = myPasswordDB.edit();
+                editor.putString(PASSWORD, getNumberPicker);
+                editor.apply();
+
+                changePasswordMode = false;
+                changePasswordButton.setBackgroundColor(Color.BLACK);
+
+                Toast.makeText(this, "비밀번호가 변경되었습니다.", Toast.LENGTH_SHORT).show();
+
+            } else {
+                if (myPasswordDB.getString(PASSWORD, "000").equals(getNumberPicker)) {
+                    changePasswordMode = true;
+                    Toast.makeText(this, "변경할 비밀번호를 맞춰주세요.", Toast.LENGTH_SHORT).show();
+                    changePasswordButton.setBackgroundColor(Color.RED);
+                }
+            }
+        });
     }
 
     private String getNowNumberPickerData() {
@@ -82,5 +113,4 @@ public class MainActivity2 extends AppCompatActivity {
                 + numberPicker3.getValue();
         return numberPicker;
     }
-
 }
