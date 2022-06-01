@@ -17,6 +17,7 @@
             android:name=".MainActivity2"
             android:exported="false" />
         <activity
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
             android:name=".DiaryActivity"
             android:exported="false" />
         <activity

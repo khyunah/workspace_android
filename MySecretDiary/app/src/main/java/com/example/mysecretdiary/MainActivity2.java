@@ -2,6 +2,7 @@ package com.example.mysecretdiary;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -38,7 +39,7 @@ public class MainActivity2 extends AppCompatActivity {
         openButton = findViewById(R.id.openButton);
         changePasswordButton = findViewById(R.id.changePasswordButton);
 
-        myPasswordDB = getSharedPreferences(PASSWORD, MODE_PRIVATE);
+        myPasswordDB = getSharedPreferences(PASSWORD, Context.MODE_PRIVATE);
     }
 
     private void addEventListener() {
