@@ -17,7 +17,23 @@ public class DiaryActivity extends AppCompatActivity {
     private EditText diaryEditText;
 
     // 핸들러는 메세지 큐한테 어떤일을 해달라고 던져줌.
-    private Handler handler = new Handler(Looper.getMainLooper());
+    // Looper 는 메세지 큐에 쌓이는 메세지들을 핸들러에게 보내주는 역할을 한다.
+    /*
+    * Looper 객체가 메세지 큐에서 메세지를 하나 딱 까봤을 때,
+    * Runnable 객체가 담겨져있으면 Handler 에 메세지를 전달하지 않고, run() 을 수행하여 해당 Runnable 작업을 바로 시작하고,
+    * Runnable 객체가 없을 경우 Message 객체 내부에 명시돼있는 Handler 의 handleMessage() 를 수행하여 처리한다.
+    *
+    * */
+    private Handler handler = new Handler(Looper.getMainLooper());  // Looper.getMainLooper() : 메인 스레드의 메인 루퍼를 반환
+
+    /*
+    * Handler
+    *
+    * 특정 메세지를 Looper 의 MessageQueue 에 넣거나,
+    * Looper 가 MessageQueue 에서 특정 메세지를 꺼내어 전달하면 이를 처리하는 기능을 수행한다.
+    * 중간 다리 역할을 수행한다.
+    * post 로 시작하는 메소드들을 통해 Runnable 객체를 직접 적재할 수 있다.
+    * */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

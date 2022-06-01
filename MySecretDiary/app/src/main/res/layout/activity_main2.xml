@@ -33,7 +33,7 @@
         app:layout_constraintTop_toBottomOf="@id/titleTextView">
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/openButton"
+            android:id="@+id/openButton1"
             android:layout_width="30dp"
             android:layout_height="40dp"
             android:layout_marginTop="10dp"
@@ -49,9 +49,9 @@
             android:layout_height="20dp"
             android:layout_marginTop="10dp"
             android:background="@color/black"
-            app:layout_constraintEnd_toEndOf="@id/openButton"
-            app:layout_constraintStart_toStartOf="@id/openButton"
-            app:layout_constraintTop_toBottomOf="@id/openButton" />
+            app:layout_constraintEnd_toEndOf="@id/openButton1"
+            app:layout_constraintStart_toStartOf="@id/openButton1"
+            app:layout_constraintTop_toBottomOf="@id/openButton1" />
 
         <NumberPicker
             android:id="@+id/numberPicker1"
@@ -60,7 +60,7 @@
             android:layout_marginRight="5dp"
             android:background="#878181"
             app:layout_constraintEnd_toStartOf="@id/numberPicker2"
-            app:layout_constraintStart_toEndOf="@id/openButton"
+            app:layout_constraintStart_toEndOf="@id/openButton1"
             app:layout_constraintTop_toTopOf="@id/passwordLayout" />
 
         <NumberPicker

@@ -14,20 +14,26 @@
         android:theme="@style/Theme.MySecretDiary"
         tools:targetApi="31">
         <activity
+            android:name=".DiaryActivity2"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity2"
-            android:exported="false" />
-        <activity
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
-            android:name=".DiaryActivity"
-            android:exported="false" />
-        <activity
-            android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true" >
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".DiaryActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+
         </activity>
     </application>
 

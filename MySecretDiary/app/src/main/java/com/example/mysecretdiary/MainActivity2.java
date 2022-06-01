@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.NumberPicker;
+import android.widget.Toast;
 
 public class MainActivity2 extends AppCompatActivity {
 
@@ -36,7 +37,14 @@ public class MainActivity2 extends AppCompatActivity {
         numberPicker2 = findViewById(R.id.numberPicker2);
         numberPicker3 = findViewById(R.id.numberPicker3);
 
-        openButton = findViewById(R.id.openButton);
+        numberPicker1.setMaxValue(9);
+        numberPicker1.setMinValue(0);
+        numberPicker2.setMaxValue(9);
+        numberPicker2.setMinValue(0);
+        numberPicker3.setMaxValue(9);
+        numberPicker3.setMinValue(0);
+
+        openButton = findViewById(R.id.openButton1);
         changePasswordButton = findViewById(R.id.changePasswordButton);
 
         myPasswordDB = getSharedPreferences(PASSWORD, Context.MODE_PRIVATE);
@@ -46,19 +54,24 @@ public class MainActivity2 extends AppCompatActivity {
 
         // 다이어리 들어가기를 눌렀을때
         openButton.setOnClickListener(v -> {
+            Toast.makeText(this, "들어가기 버튼을 눌렀습니다.", Toast.LENGTH_SHORT).show();
+
+            String getNowNumberPickerData = getNowNumberPickerData();
 
             // 내 비밀번호와 사용자가 선택한 번호가 같으면
-            if (myPasswordDB.getString(PASSWORD, "000").equals(getNowNumberPickerData())) {
-
+            if (myPasswordDB.getString(PASSWORD, "000").equals(getNowNumberPickerData)) {
+                Toast.makeText(this, "비밀번호가 일치합니다.", Toast.LENGTH_SHORT).show();
                 // 화면 전환 해주기
-                Intent intent = new Intent(this, DiaryActivity.class);
+                Intent intent = new Intent(this, DiaryActivity2.class);
                 startActivity(intent);
 
             }
         });
 
         changePasswordButton.setOnClickListener(v -> {
-
+            SharedPreferences.Editor editor = myPasswordDB.edit();
+            editor.putString(PASSWORD, getNowNumberPickerData());
+            editor.apply();
         });
 
     }
