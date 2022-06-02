@@ -25,6 +25,14 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
+    // findViewById 대체하는 뷰 바인딩
+    // 안드로이드 스튜디오 4.0이상 부터는 buildFeatures{} 안에 넣어주기
+    buildFeatures {
+        viewBinding {
+            enabled = true
+        }
+    }
 }
 
 def retrofit_version = "2.9.0"
