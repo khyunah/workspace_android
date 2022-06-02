@@ -1,14 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
     tools:context=".MovieFragment">
 
-    <TextView
+<!--  tools:listitem="@layout/item_movie_card"
+      실행전에 어떻게 recycle 되는지 보여주는 것
+
+  -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/movieRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="MOVIE FRAGMENT" />
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="-200dp"
+        tools:listitem="@layout/item_movie_card" />
 
-</FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
