@@ -3,4 +3,6 @@
     <string name="str_yts_movie">YTS MOVIE</string>
     <string name="str_favorite">favorite</string>
     <string name="str_search">search</string>
+    <string name="str_movie">movie</string>
+    <string name="str_info">info</string>
 </resources>
