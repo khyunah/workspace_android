@@ -3,6 +3,7 @@ package com.example.movie_1.models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Data {
@@ -10,7 +11,7 @@ public class Data {
     @Expose
     private int movieCount;
     private int limit;
-    private List<Movie> movies;
+    private List<Movie> movies = new ArrayList<>();
 
     public int getMovieCount() {
         return movieCount;
