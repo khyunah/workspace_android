@@ -4,10 +4,10 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/workspace_android/Movie_1/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
-        <entry key="..\:/workspace_android/Movie_1/app/src/main/res/layout/activity_splash.xml" value="0.36666666666666664" />
+        <entry key="..\:/workspace_android/Movie_1/app/src/main/res/layout/activity_splash.xml" value="0.1" />
         <entry key="..\:/workspace_android/Movie_1/app/src/main/res/layout/fragment_info.xml" value="0.35260416666666666" />
         <entry key="..\:/workspace_android/Movie_1/app/src/main/res/layout/fragment_movie.xml" value="0.35260416666666666" />
-        <entry key="..\:/workspace_android/Movie_1/app/src/main/res/layout/item_movie_card.xml" value="0.35260416666666666" />
+        <entry key="..\:/workspace_android/Movie_1/app/src/main/res/layout/item_movie_card.xml" value="0.33" />
         <entry key="..\:/workspace_android/Movie_1/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.365625" />
         <entry key="..\:/workspace_android/Movie_1/app/src/main/res/menu/top_app_bar.xml" value="0.36666666666666664" />
       </map>

@@ -8,6 +8,7 @@ import android.os.Handler;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class SplashActivity extends AppCompatActivity {
@@ -38,7 +39,7 @@ public class SplashActivity extends AppCompatActivity {
 
                 // SplashActivity 위에 MainActivity 가 뜰것이다. ( 화면이 )
 
-                // 시작 화면만 뜨고 내릴것이라서 종료해주기
+                // 스택에서 현재 이 액티비티를 제거해주는 것
                 finish();
             }
         }, 1500);
