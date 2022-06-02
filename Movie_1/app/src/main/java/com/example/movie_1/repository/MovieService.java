@@ -16,8 +16,8 @@ public interface MovieService {
             .baseUrl(Define.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build();
-
-    @GET("list_movies.json")
+//https://yts.lt/api/v2/
+    @GET("list_movies.json/")
     Call<YtsData> repoContributors(
             @Query("sort_by") String sort_by,
             @Query("limit") int limit,
