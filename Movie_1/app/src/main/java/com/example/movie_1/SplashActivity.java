@@ -30,6 +30,8 @@ public class SplashActivity extends AppCompatActivity {
         Animation slideAnimation = AnimationUtils.loadAnimation(this, R.anim.slide_side); // 어떤 화면에서 보일지, 어떤 화면을 보일지
         textView.startAnimation(slideAnimation);
 
+        // 애니메이션을 적용하였기 때문에 ( 애니메이션에 duration 속성을 넣어서 입력했던 시간만큼 시간이 걸린다.  )
+        // 해당 시간 뒤에 액티비티가 제거될 수 있도록 postDelayed() 를 사용한다.
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
