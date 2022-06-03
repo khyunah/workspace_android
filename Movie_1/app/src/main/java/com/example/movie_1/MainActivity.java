@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         // 3. 연결
         setContentView(binding.getRoot());
 
-        // 저번에 했던 플래그먼트 올리는 방식이랑 똑같음
+        // 2, 3번이 저번에 했던 플래그먼트 올리는 방식이랑 똑같음
         // View itemView = LayoutInflater.from(context).inflate(R.layout.item_closet, parent, false);
 
         replaceFragment(FragmentType.MOVIE);

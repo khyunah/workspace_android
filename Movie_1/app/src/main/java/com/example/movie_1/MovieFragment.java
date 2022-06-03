@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.movie_1.adapter.MovieAdapter;
 import com.example.movie_1.databinding.FragmentMovieBinding;
@@ -35,6 +36,12 @@ public class MovieFragment extends Fragment {
     private MovieAdapter movieAdapter;
     private List<Movie> list = new ArrayList<>();
 
+    private int currentPageNumber = 1;
+
+    // 스크롤시 중복 이벤트 발생함
+    // 해결 방안
+    private boolean preventDuplicateScrollEvent = true;
+
     public MovieFragment() {
         // Required empty public constructor
     }
@@ -60,12 +67,14 @@ public class MovieFragment extends Fragment {
         // 리사이클러뷰 만들어주기
         // 아직 없음 ( 안드로이드는 입체적으로 생각 )
         setupRecyclerView(list);
-        requestMoviesData(1);
+        requestMoviesData(currentPageNumber);
         return binding.getRoot();
     }
 
     private void requestMoviesData(int requestPage) {
-        movieService.repoContributors("rating", 10, requestPage)
+        int ITEM_LIMIT = 10;
+
+        movieService.repoContributors("rating", ITEM_LIMIT, requestPage)
                 .enqueue(new Callback<YtsData>() {
                     @Override
                     public void onResponse(Call<YtsData> call, Response<YtsData> response) {
@@ -73,7 +82,9 @@ public class MovieFragment extends Fragment {
                             // 통신을 통해서 데이터를 넘겨받았으면 adapter 에 데이터를 전달해서
                             // 화면을 갱신 처리한다.
                             list = response.body().getData().getMovies();
-                            movieAdapter.addItemList(list);
+                            movieAdapter.addItem(list);
+                            currentPageNumber++;
+                            preventDuplicateScrollEvent = true;
                         }
                     }
 
@@ -88,7 +99,7 @@ public class MovieFragment extends Fragment {
     private void setupRecyclerView(List<Movie> movieList) {
         // 1. 어댑터
         movieAdapter = new MovieAdapter();
-        movieAdapter.addItemList(movieList); // 생성자에 해도되지만 활용도가 더 높음
+        movieAdapter.addItem(movieList); // 생성자에 해도되지만 활용도가 더 높음
 
         // 2. 매니저
         LinearLayoutManager manager = new LinearLayoutManager(getContext());
@@ -97,6 +108,37 @@ public class MovieFragment extends Fragment {
         binding.movieRecyclerView.setAdapter(movieAdapter);
         binding.movieRecyclerView.setLayoutManager(manager);
 
+        // 성능 개선
         binding.movieRecyclerView.hasFixedSize();
+
+        // 이벤트 리스너
+        binding.movieRecyclerView.setOnScrollChangeListener(new View.OnScrollChangeListener() {
+            @Override
+            public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
+                if (preventDuplicateScrollEvent){
+                    LinearLayoutManager layoutManager = (LinearLayoutManager) (binding.movieRecyclerView.getLayoutManager()); // 리사이클러뷰를 그리는 매니저.
+                    int lastVisibleItemPosition = layoutManager.findLastVisibleItemPosition();
+
+                    Log.d(TAG, "lastVisibleItemPosition :: " + lastVisibleItemPosition);
+
+                    // adapter ( 데이터를 넣어줌 ) ㅡ> 카운터를 뽑을수 있음
+                    // 한번 더 통신을 했을 때 토탈 카운트 뽑기
+                    int itemTotalCount = binding.movieRecyclerView.getAdapter().getItemCount() - 1; // index 로 뽑아주기때문에 -1
+
+                    Log.d(TAG, "itemTotalCount :: " + itemTotalCount);
+
+                    if (lastVisibleItemPosition == itemTotalCount) {
+                        // 디버깅
+                        if (currentPageNumber != 1) {
+                            Log.d(TAG, "check event ! ");
+
+                            preventDuplicateScrollEvent = false;
+                            // 네트워크 요청
+                            requestMoviesData(currentPageNumber);
+                        }
+                    }
+                }
+            }
+        });
     }
 }
