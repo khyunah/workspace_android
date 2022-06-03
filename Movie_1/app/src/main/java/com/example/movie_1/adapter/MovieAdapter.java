@@ -2,6 +2,8 @@ package com.example.movie_1.adapter;
 
 // 내부 클래스 먼저 만들기
 
+import android.nfc.Tag;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +18,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.FitCenter;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.example.movie_1.R;
+import com.example.movie_1.interfaces.OnMovieItemClicked;
 import com.example.movie_1.models.Movie;
 
 import java.util.ArrayList;
@@ -24,6 +27,11 @@ import java.util.List;
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MyViewHolder> {
 
     private List<Movie> list = new ArrayList<>();
+    private OnMovieItemClicked onMovieItemClicked;
+
+    public void setOnMovieItemClicked(OnMovieItemClicked onMovieItemClicked) {
+        this.onMovieItemClicked = onMovieItemClicked;
+    }
 
     // 통신을 배우기 전에 생성자에서 데이터를 전달 받아서 화면을 구성했었다.
     // 통신을 이용하면
@@ -69,6 +77,9 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MyViewHolder
         // 메서드 ( movie )
 
         holder.setItem(movie);
+        holder.itemView.setOnClickListener(v -> {
+            onMovieItemClicked.selectedItem(movie);
+        });
     }
 
     @Override
@@ -109,6 +120,10 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MyViewHolder
                     .placeholder(R.drawable.round_image)
                     .transform(new FitCenter(), new RoundedCorners(20))
                     .into(posterIv);
+
+            itemView.setOnClickListener(v -> {
+                Log.d("TAG", " " + v.getContext());
+            });
         }
     } // end of inner class
 }
