@@ -6,6 +6,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import com.example.movie_1.databinding.ActivityMainBinding;
 import com.example.movie_1.utils.FragmentType;
@@ -48,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
             fragment = InfoFragment.newInstance();
         }
 
+        // 문자열로 이름지어서 구분
         transaction.replace(binding.mainContainer.getId(), fragment, type.toString());
         transaction.commit();
     }
@@ -64,5 +66,19 @@ public class MainActivity extends AppCompatActivity {
             }
             return true;
         });
+    }
+
+    // 앱 뒤로가기 버튼 활성화 ( 원래 기본적으로 되어있음 )
+    @Override
+    public void onBackPressed() {
+        // info 라면 한번은 movie 갔다가
+        // movie 면 종료 해보기
+        // mainContainer 에 올라와있는 녀석이 현재 movie 인지 info 인지 구분을해 야함
+        String fragmentTag = getSupportFragmentManager().findFragmentByTag(FragmentType.INFO.toString()).getTag();
+        if (fragmentTag.equals(FragmentType.INFO.toString())) {
+            replaceFragment(FragmentType.MOVIE);
+        } else {
+            super.onBackPressed();
+        }
     }
 }

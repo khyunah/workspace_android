@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+import com.bumptech.glide.Glide;
+import com.example.movie_1.databinding.ActivityMovieDetailBinding;
 import com.example.movie_1.models.Movie;
 
 public class MovieDetailActivity extends AppCompatActivity {
@@ -14,14 +16,37 @@ public class MovieDetailActivity extends AppCompatActivity {
 
     private Movie movie;
     public static final String PARAM_NAME_1 = "movie obj";
+    private ActivityMovieDetailBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_movie_detail);
+        binding = ActivityMovieDetailBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         if (getIntent() != null) {
             movie = (Movie) getIntent().getSerializableExtra(PARAM_NAME_1);
+            initData();
+            addEventListener();
         }
     }
+
+    private void initData() {
+        binding.titleTextView.setText(movie.getTitle());
+        binding.yearTextView.setText("제작년도 : " + movie.getYear() + " 년");
+        binding.runTimeTextView.setText("상영시간 : " + movie.getRuntime() + "분");
+
+        Glide.with(this)
+                .load(movie.getMediumCoverImage())
+                .into(binding.moviesPoster);
+
+        Glide.with(this)
+                .load(movie.getBackgroundImage())
+                .into(binding.backgroundImageView);
+
+    }
+    private void addEventListener() {
+
+    }
+
 }
