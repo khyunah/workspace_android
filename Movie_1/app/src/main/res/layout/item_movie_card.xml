@@ -73,7 +73,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="20dp"
                     android:numStars="10"
-                    android:rating="1"
+                    android:rating="9"
                     android:stepSize="1"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="@id/guideline2"

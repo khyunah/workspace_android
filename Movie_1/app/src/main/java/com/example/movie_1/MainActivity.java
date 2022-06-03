@@ -7,17 +7,20 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 import android.view.View;
+import android.webkit.WebView;
 
 import com.example.movie_1.databinding.ActivityMainBinding;
 import com.example.movie_1.interfaces.OnChangeToolbarType;
+import com.example.movie_1.interfaces.OnPassWebview;
 import com.example.movie_1.utils.Define;
 import com.example.movie_1.utils.FragmentType;
 
-public class MainActivity extends AppCompatActivity implements OnChangeToolbarType {
+public class MainActivity extends AppCompatActivity implements OnChangeToolbarType, OnPassWebview {
 
     // 뷰 바인딩 생성 방법
     // 1. xml 파일의 컴포넌트들을 가지고만 오기
     ActivityMainBinding binding;
+    WebView webView;    // InfoFragment 생성하는 웹뷰 객체 주소를 전달 받을 예정
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +53,10 @@ public class MainActivity extends AppCompatActivity implements OnChangeToolbarTy
         } else {
             // 생성
             fragment = InfoFragment.getInstance(this);
+            if(fragment != null){
+                InfoFragment infoFragment = (InfoFragment) fragment;
+                infoFragment.setOnPassWebview(this);
+            }
 
         }
 
@@ -80,9 +87,13 @@ public class MainActivity extends AppCompatActivity implements OnChangeToolbarTy
         // mainContainer 에 올라와있는 녀석이 현재 movie 인지 info 인지 구분을해 야함
         String fragmentTag = getSupportFragmentManager().findFragmentByTag(FragmentType.INFO.toString()).getTag();
         if (fragmentTag.equals(FragmentType.INFO.toString())) {
-//            replaceFragment(FragmentType.MOVIE);
-            View view = binding.bottomNavigation.findViewById(R.id.page1);
-            view.callOnClick();
+            if (webView.canGoBack()) {
+                webView.goBack();
+            } else {
+                //            replaceFragment(FragmentType.MOVIE);
+                View view = binding.bottomNavigation.findViewById(R.id.page1);
+                view.callOnClick();
+            }
         } else {
             super.onBackPressed();
         }
@@ -91,11 +102,16 @@ public class MainActivity extends AppCompatActivity implements OnChangeToolbarTy
     @Override
     public void onSetupType(String title) {
         // 플래그먼트에서 호출 하면 여기서 실행
-        if(title.equals(Define.PAGE_TITLE_MOVIE)){
+        if (title.equals(Define.PAGE_TITLE_MOVIE)) {
             binding.topAppbar.setTitle(title);
             binding.topAppbar.setVisibility(View.VISIBLE);
-        } else if(title.equals(Define.PAGE_TITLE_INFO)){
+        } else if (title.equals(Define.PAGE_TITLE_INFO)) {
             binding.topAppbar.setVisibility(View.GONE);
         }
+    }
+
+    @Override
+    public void onPassWebviewObj(WebView webView) {
+        this.webView = webView;
     }
 }

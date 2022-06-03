@@ -18,6 +18,7 @@ import android.webkit.WebViewClient;
 
 import com.example.movie_1.databinding.FragmentInfoBinding;
 import com.example.movie_1.interfaces.OnChangeToolbarType;
+import com.example.movie_1.interfaces.OnPassWebview;
 import com.example.movie_1.utils.Define;
 
 public class InfoFragment extends Fragment {
@@ -26,6 +27,7 @@ public class InfoFragment extends Fragment {
 
     // 콜백
     private OnChangeToolbarType onChangeToolbarType;
+    private OnPassWebview onPassWebview;
 
     // 콜백 연결할 메소드
 //    public void setOnChangeToolbarType(OnChangeToolbarType onChangeToolbarType) {
@@ -33,8 +35,13 @@ public class InfoFragment extends Fragment {
 //    }
 
     private static InfoFragment infoFragment;
+    private WebView webView;
 
     private OnBackPressedCallback onBackPressedCallback;
+
+    public void setOnPassWebview(OnPassWebview onPassWebview) {
+        this.onPassWebview = onPassWebview;
+    }
 
     private InfoFragment(OnChangeToolbarType onChangeToolbarType) {
         this.onChangeToolbarType = onChangeToolbarType;
@@ -75,7 +82,7 @@ public class InfoFragment extends Fragment {
 
     @SuppressLint("SetJavaScriptEnabled")
     private void setupWebView() {
-        WebView webView = binding.mWebView;
+        webView = binding.mWebView;
         webView.loadUrl("https://yts.mx/");
         webView.setWebViewClient(new WebViewClient(){
             @Override
@@ -94,12 +101,8 @@ public class InfoFragment extends Fragment {
         // 자바스크립트 허용 코드 넣어주기
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
+        onPassWebview.onPassWebviewObj(webView);
 
     }
 
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        onBackPressedCallback.remove();
-    }
 }
