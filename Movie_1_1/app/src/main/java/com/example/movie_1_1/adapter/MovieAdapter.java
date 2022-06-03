@@ -25,6 +25,11 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MyViewHolder
     private ArrayList<Movie> movieList = new ArrayList<>();
     private Context context;
 
+    public void addList(ArrayList<Movie> addList){
+        // 지금 무비리스트의 사이즈부터 addList 를 더하는 것.
+        this.movieList.addAll(movieList.size(), addList);
+    }
+
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
