@@ -37,11 +37,11 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MyViewHolder
     // 통신을 이용하면
     // 화면을 그리는 시점보다 데이터가 더 늦게 도달할 수도 있다.
 
-//    public void addItemList(List<Movie> list){
-//        this.list = list;
-//        notifyDataSetChanged();
-//        // notifyDataSetChanged() : 데이터가 변경되었을때 알려주는 그래서 다시 셋팅하는
-//    }
+    public void initItemList(List<Movie> list){
+        this.list = list;
+        notifyDataSetChanged();
+        // notifyDataSetChanged() : 데이터가 변경되었을때 알려주는 그래서 다시 셋팅하는
+    }
 
     public void addItem(List<Movie> addList){
         // list.size()부터 addList 를 넣어라

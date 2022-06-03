@@ -10,14 +10,15 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.example.movie_1.adapter.MovieAdapter;
 import com.example.movie_1.databinding.FragmentMovieBinding;
+import com.example.movie_1.interfaces.OnChangeToolbarType;
 import com.example.movie_1.interfaces.OnMovieItemClicked;
 import com.example.movie_1.models.Movie;
 import com.example.movie_1.models.YtsData;
 import com.example.movie_1.repository.MovieService;
+import com.example.movie_1.utils.Define;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,13 +45,27 @@ public class MovieFragment extends Fragment implements OnMovieItemClicked {
     // 해결 방안
     private boolean preventDuplicateScrollEvent = true;
 
-    public MovieFragment() {
-        // Required empty public constructor
+    // 콜백
+    private OnChangeToolbarType onChangeToolbarType;
+
+    private static MovieFragment movieFragment;
+    private boolean isFirstLoading = true;
+
+//    public void setOnChangeToolbarType(OnChangeToolbarType onChangeToolbarType) {
+//        this.onChangeToolbarType = onChangeToolbarType;
+//    }
+
+    private MovieFragment(OnChangeToolbarType onChangeToolbarType) {
+        this.onChangeToolbarType = onChangeToolbarType;
     }
 
-    public static MovieFragment newInstance() {
-        MovieFragment fragment = new MovieFragment();
-        return fragment;
+    public static MovieFragment getInstance(OnChangeToolbarType onChangeToolbarType) {
+        // 메서드를 통해서 메모리에 올리고 있다.
+        // 한번만 생성되도록
+        if (movieFragment == null) {
+            movieFragment = new MovieFragment(onChangeToolbarType);
+        }
+        return movieFragment;
     }
 
     @Override
@@ -70,7 +85,18 @@ public class MovieFragment extends Fragment implements OnMovieItemClicked {
         // 아직 없음 ( 안드로이드는 입체적으로 생각 )
         setupRecyclerView(list);
 
-        requestMoviesData(currentPageNumber);
+        if (isFirstLoading) {
+            requestMoviesData(currentPageNumber);
+        } else {
+            setVisibilityProgressBar(View.GONE);
+        }
+
+        // 콜백 호출
+        onChangeToolbarType.onSetupType(Define.PAGE_TITLE_MOVIE);
+        // 주소를 연결해줘야 한다. ( 누가 내 메서드를 콜백 받을지 )
+        // 연결하는 방법
+        // 1. 생성자
+        // 2. 메서드
 
         return binding.getRoot();
     }
@@ -86,10 +112,11 @@ public class MovieFragment extends Fragment implements OnMovieItemClicked {
                         if (response.isSuccessful()) {
                             // 통신을 통해서 데이터를 넘겨받았으면 adapter 에 데이터를 전달해서
                             // 화면을 갱신 처리한다.
-                            list = response.body().getData().getMovies();
+                            List<Movie> list = response.body().getData().getMovies();
                             movieAdapter.addItem(list);
                             currentPageNumber++;
                             preventDuplicateScrollEvent = true;
+                            isFirstLoading = false;
                             setVisibilityProgressBar(View.GONE);
                         }
                     }
@@ -108,7 +135,7 @@ public class MovieFragment extends Fragment implements OnMovieItemClicked {
         // 1. 어댑터
         movieAdapter = new MovieAdapter();
         movieAdapter.setOnMovieItemClicked(this);
-        movieAdapter.addItem(movieList); // 생성자에 해도되지만 활용도가 더 높음
+        movieAdapter.initItemList(movieList); // 생성자에 해도되지만 활용도가 더 높음
 
         // 2. 매니저
         LinearLayoutManager manager = new LinearLayoutManager(getContext());
@@ -124,7 +151,7 @@ public class MovieFragment extends Fragment implements OnMovieItemClicked {
         binding.movieRecyclerView.setOnScrollChangeListener(new View.OnScrollChangeListener() {
             @Override
             public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
-                if (preventDuplicateScrollEvent){
+                if (preventDuplicateScrollEvent) {
                     LinearLayoutManager layoutManager = (LinearLayoutManager) (binding.movieRecyclerView.getLayoutManager()); // 리사이클러뷰를 그리는 매니저.
                     int lastVisibleItemPosition = layoutManager.findLastVisibleItemPosition();
 

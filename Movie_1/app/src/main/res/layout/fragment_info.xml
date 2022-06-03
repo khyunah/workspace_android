@@ -5,9 +5,16 @@
     android:layout_height="match_parent"
     tools:context=".InfoFragment">
 
-    <TextView
+    <WebView
+        android:id="@+id/mWebView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="INFO FRAGMENT" />
+        android:layout_height="match_parent" />
+
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:id="@+id/progressIndicators"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:layout_gravity="center" />
 
 </FrameLayout>

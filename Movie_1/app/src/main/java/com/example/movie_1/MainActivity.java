@@ -6,12 +6,14 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
-import android.util.Log;
+import android.view.View;
 
 import com.example.movie_1.databinding.ActivityMainBinding;
+import com.example.movie_1.interfaces.OnChangeToolbarType;
+import com.example.movie_1.utils.Define;
 import com.example.movie_1.utils.FragmentType;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements OnChangeToolbarType {
 
     // 뷰 바인딩 생성 방법
     // 1. xml 파일의 컴포넌트들을 가지고만 오기
@@ -43,10 +45,12 @@ public class MainActivity extends AppCompatActivity {
 
         if (type == FragmentType.MOVIE) {
             // 생성
-            fragment = MovieFragment.newInstance();
+            fragment = MovieFragment.getInstance(this);
+
         } else {
             // 생성
-            fragment = InfoFragment.newInstance();
+            fragment = InfoFragment.getInstance(this);
+
         }
 
         // 문자열로 이름지어서 구분
@@ -76,9 +80,22 @@ public class MainActivity extends AppCompatActivity {
         // mainContainer 에 올라와있는 녀석이 현재 movie 인지 info 인지 구분을해 야함
         String fragmentTag = getSupportFragmentManager().findFragmentByTag(FragmentType.INFO.toString()).getTag();
         if (fragmentTag.equals(FragmentType.INFO.toString())) {
-            replaceFragment(FragmentType.MOVIE);
+//            replaceFragment(FragmentType.MOVIE);
+            View view = binding.bottomNavigation.findViewById(R.id.page1);
+            view.callOnClick();
         } else {
             super.onBackPressed();
+        }
+    }
+
+    @Override
+    public void onSetupType(String title) {
+        // 플래그먼트에서 호출 하면 여기서 실행
+        if(title.equals(Define.PAGE_TITLE_MOVIE)){
+            binding.topAppbar.setTitle(title);
+            binding.topAppbar.setVisibility(View.VISIBLE);
+        } else if(title.equals(Define.PAGE_TITLE_INFO)){
+            binding.topAppbar.setVisibility(View.GONE);
         }
     }
 }
