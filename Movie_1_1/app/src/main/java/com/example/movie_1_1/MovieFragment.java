@@ -8,7 +8,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.movie_1_1.network.MovieHttpsService;
+
 public class MovieFragment extends Fragment {
+
+    private MovieHttpsService movieHttpsService;
 
     public MovieFragment() {
 
@@ -23,7 +27,7 @@ public class MovieFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        movieHttpsService =
     }
 
     @Override
