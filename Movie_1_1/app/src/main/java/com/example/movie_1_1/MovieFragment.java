@@ -4,7 +4,9 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -71,7 +73,7 @@ public class MovieFragment extends Fragment {
 
                     // 리스트를 어댑터에 전달 해줘야한다.
                     movieAdapter.addList(list);
-
+                    page++;
                 }
             }
 
@@ -89,7 +91,25 @@ public class MovieFragment extends Fragment {
         fragmentMovieBinding.movieContainer.setAdapter(movieAdapter);
         fragmentMovieBinding.movieContainer.setLayoutManager(layoutManager);
 
+        fragmentMovieBinding.movieContainer.setOnScrollChangeListener((v, scrollX, scrollY, oldScrollX, oldScrollY) -> {
 
+            // 스크롤이 바닥에 닿이지 않아도 스크롤이 되기만 하면 데이터를 요청하는것을 막기위해서
+            // 현재 아이템의 카운트와 총 카운트를 계산해준다
+
+            // 현재 화면에 보이는 마지막 카운트
+            LinearLayoutManager manager = (LinearLayoutManager) fragmentMovieBinding.movieContainer.getLayoutManager();
+            int movieItemCount = manager.findLastVisibleItemPosition();
+            Log.d("TAG", "movieItemCount : " + movieItemCount);
+
+            // 불러와진 아이템 토탈
+            int totalMovieItemCount = fragmentMovieBinding.movieContainer.getAdapter().getItemCount() - 1;
+            Log.d("TAG", "tabMovieItemCount : " + totalMovieItemCount);
+
+            if (movieItemCount == totalMovieItemCount) {
+                Log.d("TAG", "리퀘스트 한번");
+                requestMovieData();
+                // 이렇게 하니까 리퀘스트 엄청 많이됨.
+            }
+        });
     }
-
 }
