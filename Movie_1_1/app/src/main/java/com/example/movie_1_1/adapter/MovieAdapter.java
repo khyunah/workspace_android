@@ -28,6 +28,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MyViewHolder
     public void addList(ArrayList<Movie> addList){
         // 지금 무비리스트의 사이즈부터 addList 를 더하는 것.
         this.movieList.addAll(movieList.size(), addList);
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -45,7 +46,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MyViewHolder
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         Movie movie = movieList.get(position);
 
-        Glide.with(context)
+        Glide.with(holder.movieImageView.getContext())
                 .load(movie.getMedium_cover_image())
                 .placeholder(R.drawable.image_loding)
                 .transform(new FitCenter())

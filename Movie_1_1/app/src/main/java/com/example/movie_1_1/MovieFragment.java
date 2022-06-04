@@ -29,8 +29,6 @@ public class MovieFragment extends Fragment {
     private MovieAdapter movieAdapter;
     private FragmentMovieBinding fragmentMovieBinding;
 
-    // 어댑터에 처음에 연결할 리스트
-//    private ArrayList<Movie> list = new ArrayList<>();
     private int page = 1;
 
     public MovieFragment() {
@@ -82,7 +80,6 @@ public class MovieFragment extends Fragment {
 
             }
         });
-
     }
 
     private void setupRecyclerView() {
@@ -91,5 +88,8 @@ public class MovieFragment extends Fragment {
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         fragmentMovieBinding.movieContainer.setAdapter(movieAdapter);
         fragmentMovieBinding.movieContainer.setLayoutManager(layoutManager);
+
+
     }
+
 }
