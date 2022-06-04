@@ -1,5 +1,6 @@
 package com.example.movie_1_1;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -14,6 +15,7 @@ import android.widget.LinearLayout;
 
 import com.example.movie_1_1.adapter.MovieAdapter;
 import com.example.movie_1_1.databinding.FragmentMovieBinding;
+import com.example.movie_1_1.interfaces.OnClickedMovieItem;
 import com.example.movie_1_1.models.Movie;
 import com.example.movie_1_1.models.Yts;
 import com.example.movie_1_1.network.MovieHttpsService;
@@ -25,7 +27,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MovieFragment extends Fragment {
+public class MovieFragment extends Fragment implements OnClickedMovieItem {
 
     private MovieHttpsService movieHttpsService;
     private MovieAdapter movieAdapter;
@@ -99,6 +101,7 @@ public class MovieFragment extends Fragment {
     private void setupRecyclerView(ArrayList<Movie> list) {
         movieAdapter = new MovieAdapter();
         movieAdapter.initList(list);
+        movieAdapter.setOnClickedMovieItem(this);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         fragmentMovieBinding.movieContainer.setAdapter(movieAdapter);
@@ -132,5 +135,12 @@ public class MovieFragment extends Fragment {
             }
 
         });
+    }
+
+    @Override
+    public void onClicked(Movie movie) {
+        Intent intent = new Intent(getContext(), DetailActivity.class);
+        intent.putExtra("movie", movie);
+        startActivity(intent);
     }
 }

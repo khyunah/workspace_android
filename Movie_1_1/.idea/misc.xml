@@ -3,8 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/boot/workspace_android/Movie_1_1/app/src/main/res/layout/activity_detail.xml" value="0.2359375" />
         <entry key="..\:/boot/workspace_android/Movie_1_1/app/src/main/res/layout/activity_main.xml" value="0.2359375" />
-        <entry key="..\:/boot/workspace_android/Movie_1_1/app/src/main/res/layout/fragment_info.xml" value="0.17604166666666668" />
+        <entry key="..\:/boot/workspace_android/Movie_1_1/app/src/main/res/layout/fragment_info.xml" value="0.25343999226562525" />
         <entry key="..\:/boot/workspace_android/Movie_1_1/app/src/main/res/layout/fragment_movie.xml" value="0.25343999226562525" />
         <entry key="..\:/boot/workspace_android/Movie_1_1/app/src/main/res/layout/item_movie.xml" value="0.25343999226562525" />
         <entry key="..\:/boot/workspace_android/Movie_1_1/app/src/main/res/menu/bottom_nav_bar.xml" value="0.18802083333333333" />

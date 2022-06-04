@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.FitCenter;
 import com.example.movie_1_1.R;
+import com.example.movie_1_1.interfaces.OnClickedMovieItem;
 import com.example.movie_1_1.models.Movie;
 
 import java.util.ArrayList;
@@ -23,6 +24,11 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MyViewHolder
 
     private ArrayList<Movie> movieList = new ArrayList<>();
     private Context context;
+    private OnClickedMovieItem onClickedMovieItem;
+
+    public void setOnClickedMovieItem(OnClickedMovieItem onClickedMovieItem){
+        this.onClickedMovieItem = onClickedMovieItem;
+    }
 
     public void initList(ArrayList<Movie> initList) {
         this.movieList = initList;
@@ -58,6 +64,10 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MyViewHolder
         holder.movieTitleTextView.setText(movie.getTitle());
         holder.ratingTextView.setText(String.valueOf(movie.getRating()));
         holder.ratingBar.setRating((float) movie.getRating());
+
+        holder.itemView.setOnClickListener(v -> {
+            onClickedMovieItem.onClicked(movie);
+        });
     }
 
     @Override
