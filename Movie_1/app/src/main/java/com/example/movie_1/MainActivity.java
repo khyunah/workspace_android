@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements OnChangeToolbarTy
         } else {
             // 생성
             fragment = InfoFragment.getInstance(this);
-            if(fragment != null){
+            if (fragment != null) {
                 InfoFragment infoFragment = (InfoFragment) fragment;
                 infoFragment.setOnPassWebview(this);
             }

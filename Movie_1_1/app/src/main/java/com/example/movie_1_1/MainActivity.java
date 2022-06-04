@@ -8,6 +8,7 @@ import androidx.fragment.app.FragmentTransaction;
 import android.os.Bundle;
 
 import com.example.movie_1_1.databinding.ActivityMainBinding;
+import com.example.movie_1_1.utils.FragmentType;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,11 +22,37 @@ public class MainActivity extends AppCompatActivity {
         activityMainBinding = ActivityMainBinding.inflate(getLayoutInflater());
 
         setContentView(activityMainBinding.getRoot());
+        replaceFragment(FragmentType.MOVIE);
+        tabBottomNav();
+    }
 
-        Fragment movieFragment = MovieFragment.newInstance();
+    private void replaceFragment(FragmentType fragmentType) {
+        Fragment fragment = null;
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.replace(activityMainBinding.mainContainer.getId(), movieFragment);
+        
+
+        if (fragmentType == FragmentType.MOVIE) {
+            fragment = MovieFragment.getInstance();
+        } else {
+            fragment = InfoFragment.getInstance();
+        }
+
+        transaction.replace(activityMainBinding.mainContainer.getId(), fragment);
         transaction.commit();
+    }
+
+    private void tabBottomNav() {
+        activityMainBinding.bottomNav.setOnItemSelectedListener(item -> {
+            switch (item.getItemId()) {
+                case R.id.iconMovie:
+                    replaceFragment(FragmentType.MOVIE);
+                    break;
+                case R.id.iconInfo:
+                    replaceFragment(FragmentType.INFO);
+                    break;
+            }
+            return true;
+        });
     }
 }

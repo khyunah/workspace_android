@@ -31,17 +31,23 @@ public class MovieFragment extends Fragment {
     private MovieAdapter movieAdapter;
     private FragmentMovieBinding fragmentMovieBinding;
 
+    private ArrayList<Movie> list = new ArrayList<>();
+
     private int page = 1;
     private boolean requestData = true;
+    private boolean isFirstRequest = true;
 
-    public MovieFragment() {
+    private static MovieFragment movieFragment;
+
+    private MovieFragment() {
 
     }
 
-    public static MovieFragment newInstance() {
-        MovieFragment fragment = new MovieFragment();
-
-        return fragment;
+    public static MovieFragment getInstance() {
+        if (movieFragment == null) {
+            movieFragment = new MovieFragment();
+        }
+        return movieFragment;
     }
 
     @Override
@@ -56,9 +62,12 @@ public class MovieFragment extends Fragment {
                              Bundle savedInstanceState) {
         fragmentMovieBinding = FragmentMovieBinding.inflate(inflater, container, false);
 
-        setupRecyclerView();
+        setupRecyclerView(list);
 
-        requestMovieData();
+        if (isFirstRequest) {
+            requestMovieData();
+        }
+
 
         return fragmentMovieBinding.getRoot();
     }
@@ -76,6 +85,7 @@ public class MovieFragment extends Fragment {
                     movieAdapter.addList(list);
                     page++;
                     requestData = true;
+                    isFirstRequest = false;
                 }
             }
 
@@ -86,8 +96,9 @@ public class MovieFragment extends Fragment {
         });
     }
 
-    private void setupRecyclerView() {
+    private void setupRecyclerView(ArrayList<Movie> list) {
         movieAdapter = new MovieAdapter();
+        movieAdapter.initList(list);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         fragmentMovieBinding.movieContainer.setAdapter(movieAdapter);
@@ -96,7 +107,7 @@ public class MovieFragment extends Fragment {
         fragmentMovieBinding.movieContainer.setOnScrollChangeListener((v, scrollX, scrollY, oldScrollX, oldScrollY) -> {
 
             /* 2 */
-            if(requestData){
+            if (requestData) {
 
                 /* 1 */
                 // 스크롤이 바닥에 닿이지 않아도 스크롤이 되기만 하면 데이터를 요청하는것을 막기위해서
