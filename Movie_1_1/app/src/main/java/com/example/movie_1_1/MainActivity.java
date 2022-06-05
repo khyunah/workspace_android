@@ -6,13 +6,17 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
+import android.view.View;
+import android.webkit.WebView;
 
 import com.example.movie_1_1.databinding.ActivityMainBinding;
+import com.example.movie_1_1.interfaces.OnPassWebView;
 import com.example.movie_1_1.utils.FragmentType;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements OnPassWebView {
 
-    ActivityMainBinding activityMainBinding;
+    private ActivityMainBinding activityMainBinding;
+    private WebView webView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,15 +34,17 @@ public class MainActivity extends AppCompatActivity {
         Fragment fragment = null;
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
-        
+
 
         if (fragmentType == FragmentType.MOVIE) {
             fragment = MovieFragment.getInstance();
         } else {
             fragment = InfoFragment.getInstance();
+            InfoFragment infoFragment = (InfoFragment) fragment;
+            infoFragment.setOnPassWebView(this);
         }
 
-        transaction.replace(activityMainBinding.mainContainer.getId(), fragment);
+        transaction.replace(activityMainBinding.mainContainer.getId(), fragment, fragmentType.toString());
         transaction.commit();
     }
 
@@ -54,5 +60,27 @@ public class MainActivity extends AppCompatActivity {
             }
             return true;
         });
+    }
+
+    @Override
+    public void onSetPassWebView(WebView webView) {
+        this.webView = webView;
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        String fragmentTag = getSupportFragmentManager().findFragmentByTag(FragmentType.INFO.toString()).getTag();
+
+        if (fragmentTag.equals(FragmentType.INFO.toString())) {
+if (webView.canGoBack()) {
+    webView.goBack();
+} else {
+                View view = activityMainBinding.bottomNav.findViewById(R.id.iconMovie);
+                view.callOnClick();
+            }
+        } else {
+            super.onBackPressed();
+        }
     }
 }
