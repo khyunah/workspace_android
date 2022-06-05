@@ -73,9 +73,9 @@ public class MainActivity extends AppCompatActivity implements OnPassWebView {
         String fragmentTag = getSupportFragmentManager().findFragmentByTag(FragmentType.INFO.toString()).getTag();
 
         if (fragmentTag.equals(FragmentType.INFO.toString())) {
-if (webView.canGoBack()) {
-    webView.goBack();
-} else {
+            if (webView.canGoBack()) {
+                webView.goBack();
+            } else {
                 View view = activityMainBinding.bottomNav.findViewById(R.id.iconMovie);
                 view.callOnClick();
             }
